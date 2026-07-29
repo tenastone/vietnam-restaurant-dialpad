@@ -6694,7 +6694,7 @@ async function submitNewCompany(e) {
     specialty: f.specialty.value.trim() || null,
     by_user: f.by_user.value.trim() || null
   };
-  if (!data.name || !data.sheet || !data.phone1) {
+  if (!data.sheet) {
     toast('❌ 必填项未填完'); return;
   }
   const { data: inserted, error } = await sb.from('extra_companies').insert(data).select();
@@ -6823,11 +6823,11 @@ window.addEventListener('DOMContentLoaded', () => {
       <label>电话 2 (备用)</label>
       <input type="tel" name="phone2" placeholder="可选">
 
-      <label>公司英文/越文名</label>
-      <input type="text" name="name_en" required placeholder="例:Jiahao Foods Vietnam (必填)">
+      <label>公司英文/越文名 <span class="req">*必填</span></label>
+      <input type="text" name="name_en" required placeholder="例:Jiahao Foods Vietnam">
 
-      <label>详细地址 (有 Google Maps 链接粘贴更好)</label>
-      <input type="text" name="address" required placeholder="例:123 Nguyễn Huệ, Quận 1 (必填)">
+      <label>详细地址 (有 Google Maps 链接粘贴更好) <span class="req">*必填</span></label>
+      <input type="text" name="address" required placeholder="例:123 Nguyễn Huệ, Quận 1">
 
       <div id="subTypeGroup" style="display:none;">
       <label>经销商子类 <span class="req">*必选 (Sheet 2 必填)</span></label>
@@ -6843,8 +6843,8 @@ window.addEventListener('DOMContentLoaded', () => {
     <label>所在区/郡 (影响距离计算)</label>
       <input type="text" name="district" placeholder="例:1 郡 / 5 郡 / Bình Thạnh">
 
-      <label>Google Maps 链接</label>
-      <input type="url" name="gmaps" required placeholder="https://maps.google.com/... (必填)">
+      <label>Google Maps 链接 <span class="req">*必填</span></label>
+      <input type="url" name="gmaps" required placeholder="https://maps.google.com/...">
 
       <label>官网</label>
       <input type="url" name="website" placeholder="https://...">
@@ -6852,8 +6852,8 @@ window.addEventListener('DOMContentLoaded', () => {
       <label>招牌/特色 (餐厅类用)</label>
       <textarea name="specialty" placeholder="例:主打中餐, 8 桌, 老板是福建人"></textarea>
 
-      <label>添加人 (你名字)</label>
-      <input type="text" name="by_user" required placeholder="例:Thomas (必填)">
+      <label>添加人 (你名字) <span class="req">*必填</span></label>
+      <input type="text" name="by_user" required placeholder="例:Thomas">
 
       <div class="modal-actions">
         <button type="button" onclick="closeAddModal()">取消</button>
