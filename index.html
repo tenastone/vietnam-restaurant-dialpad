@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -2211,7 +2211,7 @@ function showToast(msg) {
     <div class="card">
       <div class="card-head"><span class="badge">• 意式披萨 (越日合资 — 总部在胡志明)</span><span class="source-tag">Sheet 3</span><span class="dist-tag">🚗 3.3 km · 1 郡</span></div>
       <div class="name">Pizza 4P's (披萨 4P's)</div><div class="name-en">Pizza 4P's</div>
-      <div class="phone-block"><a href="tel:+84836220500" class="phone-link">📞 +84 836 220 500<span class="lbl">点击拨打</span></a><!-- 备用电话已删 (v19.3: 原 +84 19006043 是 VIFON 联系人号码被错配, 2026-07-30) --></a></div>
+      <div class="phone-block"><a href="tel:+84836220500" class="phone-link">📞 +84 836 220 500<span class="lbl">点击拨打</span></a><!-- 备用电话已删 (v19.3: 原 +84 19006043 是 VIFON 联系人号码被错配, 2026-07-30) --></div>
       <div class="addr-block"><div class="addr-text"><span class="pin">📍</span>8/15 Lê Thánh Tôn Street, Bến Nghé, District 1, TP.HCM</div><div class="addr-actions"><button class="btn btn-copy" onclick="copyText('+84836220500 / 8419006043', '电话'); return false;">📞 复制电话</button><button class="btn btn-name" onclick="copyText('Pizza 4P\'s (披萨 4P\'s)', '公司名'); return false;">🏷 复制名字</button><a href="https://www.google.com/maps/search/?api=1&query=8/15%20L%C3%AA%20Th%C3%A1nh%20T%C3%B4n%20Street%2C%20B%E1%BA%BFn%20Ngh%C3%A9%2C%20District%201%2C%20TP.HCM" target="_blank" class="btn btn-maps">🗺️ Google Maps</a><button class="btn btn-copy" onclick="copyAddr('8/15 Lê Thánh Tôn Street, Bến Nghé, District 1, TP.HCM', this); return false;">📋 复制地址</button></div></div>
       <div class="call-log" data-key="Sheet 3 连锁::Pizza 4P's (披萨 4P's)">
   <div class="call-log-head">
@@ -6658,7 +6658,6 @@ function closeAddModal() {
 }
 
 
-<script>
 function toggleSubType() {
   var sheet = document.querySelector('[name="sheet"]').value;
   var subGroup = document.getElementById('subTypeGroup');
@@ -6672,7 +6671,6 @@ function toggleSubType() {
     subSelect.value = '';
   }
 }
-</script>
 async function submitNewCompany(e) {
   e.preventDefault();
   if (!sb) { toast('❌ 云端未连接, 无法保存'); return; }
