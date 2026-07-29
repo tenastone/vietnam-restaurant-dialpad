@@ -6608,7 +6608,7 @@ function applyFilters() {
       }
     }
     // followup filter
-    if (activeFilters.followup && activeFilters.followup !== 'all') {
+    if (activeFilters.followup !== 'all' && activeFilters.followup !== undefined) {
       var fuSel = card.querySelector('[data-field="followup"]');
       var fuVal = fuSel ? fuSel.value : '';
       if (fuVal !== activeFilters.followup) show = false;
