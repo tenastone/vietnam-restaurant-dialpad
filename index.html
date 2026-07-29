@@ -6694,8 +6694,9 @@ async function submitNewCompany(e) {
     specialty: f.specialty.value.trim() || null,
     by_user: f.by_user.value.trim() || null
   };
-  if (!data.sheet) {
-    toast('❌ 必填项未填完'); return;
+  if (!data.name || !data.sheet || !data.phone1) {
+    toast('❌ 必填项未填完');
+    return;
   }
   const { data: inserted, error } = await sb.from('extra_companies').insert(data).select();
   if (error) { toast('❌ 保存失败: ' + error.message); return; }
@@ -6804,7 +6805,7 @@ window.addEventListener('DOMContentLoaded', () => {
     <h2>➕ 新增公司</h2>
     <form id="addForm" onsubmit="submitNewCompany(event)">
       <label>公司名称 (中) <span class="req">*必填</span></label>
-      <input type="text" name="name" placeholder="例:嘉豪食品越南办事处 (可选)">
+      <input type="text" name="name" required placeholder="例:嘉豪食品越南办事处">
 
       <label>类别 <span class="req">*必选 (决定归到哪一栏)</span></label>
       <select name="sheet" required onchange="toggleSubType()">
@@ -6818,7 +6819,7 @@ window.addEventListener('DOMContentLoaded', () => {
       <div class="form-hint">选哪个, 卡片就归到那个工作簿分类下</div>
 
       <label>电话 1 <span class="req">*必填 (Thomas 重点用)</span></label>
-      <input type="tel" name="phone1" placeholder="例:+84 28 1234 5678 (可选)">
+      <input type="tel" name="phone1" required placeholder="例:+84 28 1234 5678">
 
       <label>电话 2 (备用)</label>
       <input type="tel" name="phone2" placeholder="可选">
