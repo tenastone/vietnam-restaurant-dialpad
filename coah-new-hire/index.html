@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>印尼团队 · 第一次小组任务 · 工作环境配置与 AI Agent 基础作业</title>
+<meta name="description" content="印尼学习小组第一次任务：国际网络环境、Google 账号、海外应用、MiniMax AI Agent 安装与基础作业。麦肯锡风格排版。">
+<style>
+:root {
+    --bg: #f5f5f7;
+    --card: rgba(255,255,255,0.82);
+    --card-solid: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --label: #86868b;
+    --line: rgba(0,0,0,0.08);
+    --line-strong: rgba(0,0,0,0.12);
+    --blue: #0071e3;
+    --blue-hover: #0077ed;
+    --green: #34c759;
+    --orange: #ff9f0a;
+    --red: #ff3b30;
+    --purple: #af52de;
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 18px 50px rgba(0,0,0,0.08);
+    --shadow-soft: 0 10px 30px rgba(0,0,0,0.06);
+    --max: 1120px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+    min-height: 100vh;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(0,113,227,0.13), transparent 30%),
+        radial-gradient(circle at top right, rgba(52,199,89,0.10), transparent 26%),
+        linear-gradient(180deg, #fbfbfd 0%, var(--bg) 45%, #ffffff 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+}
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    background: rgba(251,251,253,0.72);
+    backdrop-filter: saturate(180%) blur(22px);
+    -webkit-backdrop-filter: saturate(180%) blur(22px);
+}
+.nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 13px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    white-space: nowrap;
+}
+.brand-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #0071e3, #66b2ff);
+    color: #fff;
+    font-weight: 900;
+    box-shadow: 0 8px 20px rgba(0,113,227,0.24);
+}
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.nav-menu a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 999px;
+    transition: all .2s ease;
+    white-space: nowrap;
+}
+.nav-menu a:hover { color: var(--text); background: #fff; box-shadow: 0 4px 14px rgba(0,0,0,0.06); text-decoration: none; }
+
+.hero {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 74px 22px 40px;
+    text-align: center;
+}
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 18px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: rgba(0,113,227,0.08);
+    color: #0066cc;
+    font-weight: 700;
+    font-size: 14px;
+}
+.hero h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    font-weight: 850;
+    margin-bottom: 18px;
+}
+.hero .subtitle {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.5;
+    color: var(--muted);
+    letter-spacing: -0.01em;
+}
+.hero-actions {
+    margin-top: 26px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 999px;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-weight: 800;
+    background: var(--blue);
+    color: #fff;
+    transition: all .2s ease;
+    font-size: 15px;
+}
+.hero-btn.secondary {
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--line);
+}
+.hero-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); text-decoration: none; }
+
+.meta-grid {
+    max-width: 800px;
+    margin: 30px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+.meta-cell {
+    padding: 14px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    text-align: left;
+}
+.meta-cell .label {
+    font-size: 11px;
+    color: var(--label);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+.meta-cell .value {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 750;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+main { max-width: var(--max); margin: 0 auto; padding: 16px 22px 80px; }
+section { scroll-margin-top: 92px; }
+
+.section-head {
+    margin: 26px 0 18px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+}
+.section-kicker {
+    color: var(--blue);
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.section-title {
+    font-size: clamp(26px, 4vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    font-weight: 850;
+}
+.section-desc { color: var(--muted); max-width: 620px; font-size: 16px; }
+
+.glass-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    overflow: hidden;
+}
+.solid-card {
+    background: var(--card-solid);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+}
+
+/* 任务卡 */
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+.task-card {
+    position: relative;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    overflow: hidden;
+    transition: all .22s ease;
+}
+.task-card::before {
+    content: "";
+    position: absolute;
+    width: 200px; height: 200px;
+    right: -80px; top: -80px;
+    border-radius: 50%;
+    background: var(--task-color, rgba(0,113,227,0.10));
+    pointer-events: none;
+}
+.task-card.t1 { --task-color: rgba(0,113,227,0.12); }
+.task-card.t2 { --task-color: rgba(52,199,89,0.12); }
+.task-card.t3 { --task-color: rgba(255,159,10,0.14); }
+.task-card.t4 { --task-color: rgba(175,82,222,0.13); }
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+.task-tag {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.05);
+    color: var(--muted);
+    font-weight: 800;
+    font-size: 12px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+}
+.task-num {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+.task-title {
+    font-size: 22px;
+    font-weight: 850;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+.task-meta {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: rgba(0,113,227,0.08);
+    color: #0066cc;
+    font-size: 12px;
+    font-weight: 750;
+    margin-bottom: 12px;
+}
+.task-body {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+}
+.task-divider {
+    border-top: 1px dashed var(--line-strong);
+    margin: 16px 0;
+    position: relative;
+    z-index: 1;
+}
+.task-output {
+    font-size: 14px;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+}
+.task-output strong { color: var(--blue); }
+
+/* 成员卡 */
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+.member-card {
+    background: rgba(255,255,255,0.85);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    transition: all .2s ease;
+}
+.member-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+.member-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+.member-card.m1 .member-avatar { background: linear-gradient(135deg, #0071e3, #66b2ff); }
+.member-card.m2 .member-avatar { background: linear-gradient(135deg, #34c759, #66d680); }
+.member-card.m3 .member-avatar { background: linear-gradient(135deg, #ff9f0a, #ffb84d); }
+.member-name { font-size: 17px; font-weight: 800; letter-spacing: -0.02em; }
+.member-role { color: var(--muted); font-size: 13px; font-weight: 650; margin-top: 2px; }
+.member-scope {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.55;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+}
+.member-scope .scope-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(0,113,227,0.08);
+    color: #0066cc;
+    font-weight: 750;
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+/* 步骤手风琴 */
+.steps { display: flex; flex-direction: column; gap: 14px; }
+.step {
+    background: rgba(255,255,255,0.82);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all .2s ease;
+}
+.step:hover { box-shadow: var(--shadow-soft); }
+.step-summary {
+    padding: 18px 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    list-style: none;
+}
+.step-summary::-webkit-details-marker { display: none; }
+.step-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 800;
+    font-size: 15px;
+}
+.step-title { font-size: 17px; font-weight: 800; letter-spacing: -0.02em; flex: 1; }
+.step-chevron {
+    transition: transform .22s ease;
+    color: var(--muted);
+    font-weight: 800;
+}
+.step[open] .step-chevron { transform: rotate(90deg); }
+.step-body {
+    padding: 0 22px 22px;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+}
+.step-body h4 {
+    margin: 16px 0 8px;
+    font-size: 15px;
+    font-weight: 850;
+    color: var(--text);
+    letter-spacing: -0.01em;
+}
+.step-body h4:first-child { margin-top: 4px; }
+.step-body ol, .step-body ul {
+    padding-left: 1.4em;
+    margin: 6px 0;
+}
+.step-body li { margin-bottom: 5px; color: var(--text); }
+.step-body p { margin-bottom: 8px; }
+.step-body .sub {
+    margin: 8px 0;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.03);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+.step-body .sub strong { color: var(--text); }
+
+.callout {
+    margin: 14px 0;
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    background: rgba(0,113,227,0.08);
+    color: #064c99;
+    border: 1px solid rgba(0,113,227,0.16);
+    font-size: 14px;
+    line-height: 1.6;
+}
+.callout.warn { background: rgba(255,59,48,0.08); color: #8b1f17; border-color: rgba(255,59,48,0.18); }
+.callout.tip { background: rgba(255,159,10,0.10); color: #8a4b00; border-color: rgba(255,159,10,0.20); }
+.callout strong { font-weight: 800; }
+
+/* 邮箱命名 */
+.name-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+.name-card {
+    background: rgba(255,255,255,0.82);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+}
+.name-card h4 {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.name-card .primary {
+    font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 6px;
+}
+.name-card .alt {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* 应用清单表 */
+.app-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.app-table th, .app-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+.app-table th {
+    background: rgba(0,0,0,0.04);
+    font-weight: 800;
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.app-table td { color: var(--text); }
+.app-table tr:last-child td { border-bottom: none; }
+
+/* 链接卡片 */
+.link-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+.link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.78);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 750;
+    transition: all .18s ease;
+}
+.link-card::after {
+    content: "↗";
+    color: var(--muted);
+    margin-left: auto;
+    font-weight: 800;
+}
+.link-card:hover {
+    transform: translateY(-2px);
+    background: #fff;
+    border-color: rgba(0,113,227,0.35);
+    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+}
+.link-card .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    background: rgba(0,113,227,0.10);
+    color: var(--blue);
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+    background: rgba(255,255,255,0.78);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+.faq-q {
+    padding: 14px 18px;
+    cursor: pointer;
+    font-weight: 800;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    font-size: 15px;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::before {
+    content: "Q";
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--blue);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+.faq-a {
+    padding: 0 18px 16px 56px;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* CEO 模式 */
+.ceo-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0;
+}
+.ceo-node {
+    background: rgba(255,255,255,0.85);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    text-align: center;
+}
+.ceo-node .emoji { font-size: 24px; margin-bottom: 6px; }
+.ceo-node .role { font-weight: 800; font-size: 15px; }
+.ceo-node .desc { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.ceo-arrow {
+    font-size: 22px;
+    color: var(--blue);
+    font-weight: 800;
+}
+
+/* 答疑机制时间卡 */
+.meeting-card {
+    background: linear-gradient(135deg, rgba(0,113,227,0.08), rgba(52,199,89,0.06));
+    border: 1px solid rgba(0,113,227,0.20);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    margin-bottom: 18px;
+}
+.meeting-card .title { font-size: 18px; font-weight: 850; color: var(--text); margin-bottom: 10px; }
+.meeting-card .time {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--blue);
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* 底部 */
+footer {
+    text-align: center;
+    color: var(--muted);
+    padding: 34px 20px;
+    border-top: 1px solid var(--line);
+    background: rgba(255,255,255,0.55);
+    margin-top: 40px;
+    font-size: 14px;
+}
+footer strong { color: var(--text); }
+
+.back-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 80;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease;
+}
+.back-top.show { opacity: 1; visibility: visible; }
+
+/* 响应式 */
+@media (max-width: 980px) {
+    .nav-menu { order: 3; width: 100%; overflow-x: auto; justify-content: flex-start; }
+    .nav-inner { flex-wrap: wrap; justify-content: center; }
+    .brand { margin-right: auto; }
+    .task-grid, .member-grid, .name-grid, .link-grid { grid-template-columns: 1fr; }
+    .meta-grid { grid-template-columns: repeat(2, 1fr); }
+    .ceo-flow { grid-template-columns: 1fr; }
+    .ceo-arrow { transform: rotate(90deg); justify-self: center; }
+}
+@media (max-width: 640px) {
+    .hero { padding-top: 48px; }
+    .glass-card { padding: 20px; border-radius: 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="brand">
+            <span class="brand-icon">印</span>
+            <span>印尼团队 · 第一次小组任务</span>
+        </a>
+        <div class="nav-menu">
+            <a href="#overview">任务总览</a>
+            <a href="#members">成员</a>
+            <a href="#steps">步骤</a>
+            <a href="#names">命名</a>
+            <a href="#meeting">答疑</a>
+            <a href="#faq">FAQ</a>
+            <a href="#links">链接</a>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="eyebrow">印尼市场开拓 · 学习小组 · v3.0</div>
+    <h1>工作环境配置<br>+ AI Agent 基础作业</h1>
+    <p class="subtitle">把「国际网络 + 海外账号 + MiniMax（Mavis）」三件事跑通，为后续客户开发、邮件沟通、市场调研准备好基座。</p>
+    <div class="hero-actions">
+        <a href="#steps" class="hero-btn">开始任务</a>
+        <a href="#overview" class="hero-btn secondary">查看 4 个任务</a>
+    </div>
+    <div class="meta-grid">
+        <div class="meta-cell">
+            <div class="label">小组人数</div>
+            <div class="value">3 人</div>
+        </div>
+        <div class="meta-cell">
+            <div class="label">任务周期</div>
+            <div class="value">本周五前尽量，完不成也行</div>
+        </div>
+        <div class="meta-cell">
+            <div class="label">答疑机制</div>
+            <div class="value">销售助理确认，灵活</div>
+        </div>
+        <div class="meta-cell">
+            <div class="label">文档版本</div>
+            <div class="value">v3.0 · 2026-08-12</div>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<!-- 一、成员与职责 -->
+<section id="members">
+    <div class="section-head">
+        <div>
+            <div class="section-kicker">Part 1 · 团队</div>
+            <h2 class="section-title">成员与职责</h2>
+        </div>
+        <p class="section-desc">分工基于一个核心判断：销售助理在印尼（已有海外网络），两位销售代表在国内（需先配置网络）。</p>
+    </div>
+
+    <div class="glass-card">
+        <div class="member-grid">
+            <div class="member-card m1">
+                <div class="member-avatar">助</div>
+                <div class="member-name">销售助理</div>
+                <div class="member-role">销售助理 · 印尼</div>
+                <div class="member-scope">
+                    <span class="scope-tag">仅 AI Agent 部分</span><br>
+                    已具备海外网络环境，跳过网络工具。专注 AI Agent 基础作业。<br>
+                    <strong>无需美区 Apple ID</strong>，印尼区 Apple ID 已经能下载非常多的软件。
+                </div>
+            </div>
+            <div class="member-card m2">
+                <div class="member-avatar">①</div>
+                <div class="member-name">印尼销售代表 1</div>
+                <div class="member-role">印尼销售代表 · 中国国内</div>
+                <div class="member-scope">
+                    <span class="scope-tag">完整流程</span><br>
+                    需先配置国际网络环境，再装 AI Agent，最后做基础作业。
+                </div>
+            </div>
+            <div class="member-card m3">
+                <div class="member-avatar">②</div>
+                <div class="member-name">印尼销售代表 2</div>
+                <div class="member-role">印尼销售代表 · 中国国内</div>
+                <div class="member-scope">
+                    <span class="scope-tag">完整流程</span><br>
+                    同上，与印尼销售代表 1 同步推进。
+                </div>
+            </div>
+        </div>
+
+        <div class="callout info">
+            <strong>美区 Apple ID 只针对使用 iOS 系统的中国同事。</strong>销售助理不需要美区 ID，印尼区 Apple ID 已经能下载非常多常用软件。
+        </div>
+    </div>
+</section>
+
+<!-- 二、第一次任务总览 -->
+<section id="overview">
+    <div class="section-head">
+        <div>
+            <div class="section-kicker">Part 2 · 概览</div>
+            <h2 class="section-title">4 个任务 · 一张图看清</h2>
+        </div>
+        <p class="section-desc">从基础到进阶，从网络到 AI Agent，每一步都有明确的产出。</p>
+    </div>
+
+    <div class="task-grid">
+        <div class="task-card t1">
+            <div class="task-tag">任务 1</div>
+            <div class="task-num">01</div>
+            <div class="task-title">国际网络环境配置</div>
+            <div class="task-meta">仅两位销售代表</div>
+            <div class="task-divider"></div>
+            <div class="task-output">
+                <strong>目标：</strong>手机和电脑都能稳定访问 Google、YouTube 等海外服务。<br>
+                <strong>产出：</strong>iOS Loon 已激活、安卓 FlClash 已激活、电脑 FlClash 已配置、<strong>iOS 系统的中国同事</strong>拥有自己的美区 Apple ID（销售助理无需美区 ID）。
+            </div>
+        </div>
+
+        <div class="task-card t2">
+            <div class="task-tag">任务 2</div>
+            <div class="task-num">02</div>
+            <div class="task-title">Google 账号与海外应用</div>
+            <div class="task-meta">仅两位销售代表</div>
+            <div class="task-divider"></div>
+            <div class="task-output">
+                <strong>目标：</strong>注册一个看起来规范、专业的 Google 账号。海外大部分产品都需要 Google 账号登录，相比其他品牌邮箱，Google 邮箱的限制更少。<br>
+                <strong>产出：</strong>Gmail 账号 + 9 个海外 App。
+            </div>
+        </div>
+
+        <div class="task-card t3">
+            <div class="task-tag">任务 3</div>
+            <div class="task-num">03</div>
+            <div class="task-title">MiniMax 安装与订阅</div>
+            <div class="task-meta">三位同事共同</div>
+            <div class="task-divider"></div>
+            <div class="task-output">
+                <strong>目标：</strong>把 MiniMax（Mavis）这个 AI Agent 装好，用低价套餐起步。<br>
+                <strong>产出：</strong>电脑端 MiniMax Agent 桌面端（国内版）+ 手机端 MiniMax App（国内版）+ 每月低于 ¥50 的订阅方案。
+            </div>
+        </div>
+
+        <div class="task-card t4">
+            <div class="task-tag">任务 4</div>
+            <div class="task-num">04</div>
+            <div class="task-title">AI Agent 实操作业</div>
+            <div class="task-meta">三位同事共同</div>
+            <div class="task-divider"></div>
+            <div class="task-output">
+                <strong>目标：</strong>让三人熟悉 MiniMax（Mavis）的基本玩法。<br>
+                <strong>产出：</strong>电脑端与手机端互联 + 配置 MiniMax 操控腾讯企业邮箱 + 创建翻译员工 + 法务员工，理解 CEO 派任务的模式。
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 三、详细步骤 -->
+<section id="steps">
+    <div class="section-head">
+        <div>
+            <div class="section-kicker">Part 3 · 详细步骤</div>
+            <h2 class="section-title">从 0 到完成，每一步</h2>
+        </div>
+        <p class="section-desc">点击展开各步骤细节。所有客户端、视频教程、图文教程都汇总在一分机场使用文档中心。</p>
+    </div>
+
+    <div class="glass-card">
+        <div class="steps">
+
+            <details class="step" open>
+                <summary class="step-summary">
+                    <span class="step-num">1</span>
+                    <span class="step-title">网络工具安装 · iOS / 安卓 / 电脑端（仅中国同事）</span>
+                    <span class="step-chevron">▶</span>
+                </summary>
+                <div class="step-body">
+                    <h4>1.1 通用说明</h4>
+                    <ul>
+                        <li>订阅链接由 Thomas 统一发放，不要在公开文档、群聊里转发</li>
+                        <li>两人各自独立配置，配置完用 YouTube 验证（打开 youtube.com 看是否能加载首页）</li>
+                    </ul>
+
+                    <h4>1.2 iOS 端（iPhone / iPad）— 仅中国 iOS 同事</h4>
+                    <p>适合机型：iOS 15 及以上。</p>
+                    <ol>
+                        <li>获取 Apple ID（iOS 中国同事必须；销售助理跳过此步）· 第一阶段（临时）：使用 Thomas 提供的美区 Apple ID 账号密码，登录 App Store。仅下载需要的 App，不要登录 iCloud。</li>
+                    </ol>
+                    <div class="sub">
+                        <strong>说明：</strong>先使用 Thomas 的账户是因为目前还没有稳定的国际上网环境。登录美区 App Store 需要先连上 VPN 并选美国节点，注册美区 ID 也是一样。等完成 §1 的网络配置后，每位 iOS 中国同事就可以用自己的美区 ID 操作了。<br><br>
+                        <strong>销售助理说明：</strong>销售助理在印尼，<strong>不需要美区 Apple ID</strong>。印尼区 Apple ID 已经能下载非常多常用软件（包括 Loon 等），无需特殊账号。
+                    </div>
+                    <ol start="2">
+                        <li>获取 Apple ID · 第二阶段（建议）：每位 iOS 中国同事注册自己的美区 ID，详细教程见 §4。</li>
+                        <li>下载 Loon：在美区 App Store 搜索 Loon，售价 $7.99（约 ¥58，一次性买断）。下载后用 Thomas 发放的订阅链接导入节点。</li>
+                        <li>导入订阅：参考一分机场 Loon 视频教程。配置流程：复制订阅链接 → Loon 主页 → 配置 → 添加 → 粘贴 → 启用。</li>
+                        <li>验证：打开 Safari 访问 youtube.com，能加载首页即成功。</li>
+                    </ol>
+                    <div class="callout warn">
+                        <strong>注意：</strong>Loon 配置导入参考通用 Clash 系列教程；如与 Loon 官方文档有差异，以 Loon 应用内使用说明为准。
+                    </div>
+
+                    <h4>1.3 安卓端 — FlClash</h4>
+                    <p>下载入口（国内网络可直接下载）：</p>
+                    <ul>
+                        <li><strong>国内下载（推荐）</strong>：<a href="https://xiazai.yfjc.win/1/%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF" target="_blank">一分机场网盘 - 安卓客户端</a> — 选择 <strong>FlClash-0.8.94.apk</strong></li>
+                        <li>GitHub 官方仓库（备选，需科学上网）：<a href="https://github.com/chen08209/FlClash/releases" target="_blank">FlClash Releases</a></li>
+                        <li>一分机场视频教程：<a href="https://web.netwiki.link/#video" target="_blank">FlClash/Bettbox 安卓教程</a></li>
+                        <li>安卓图文教程（官方）：<a href="https://image.dooo.ng/t/2025/12/08/69364ca30de7c.webp" target="_blank">FlClash 安卓教程图</a></li>
+                    </ul>
+                    <ol>
+                        <li>在一分机场网盘或 GitHub Releases 页面下载 <strong>FlClash-0.8.94.apk</strong></li>
+                        <li>安装到安卓手机（允许未知来源安装）</li>
+                        <li>打开 FlClash → 配置 → 右上角 + → URL 导入</li>
+                        <li>粘贴 Thomas 发放的订阅链接 → 自动拉取节点列表</li>
+                        <li>返回主页 → 选择一个节点 → 开启连接</li>
+                        <li>验证：Chrome 打开 youtube.com</li>
+                    </ol>
+
+                    <h4>1.4 电脑端（Windows / Mac）— FlClash</h4>
+                    <table class="app-table">
+                        <thead>
+                            <tr><th>系统</th><th>推荐</th><th>备注</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Windows</td><td>FlClash</td><td>一分机场首选，兼容性好</td></tr>
+                            <tr><td>Mac</td><td>FlClash</td><td>Mac 端首选</td></tr>
+                        </tbody>
+                    </table>
+                    <p>下载入口：</p>
+                    <ul>
+                        <li><strong>国内下载（推荐）</strong>：<a href="https://xiazai.yfjc.win/1" target="_blank">一分机场网盘</a> — Windows/Mac 客户端分类下载</li>
+                        <li>FlClash GitHub：<a href="https://github.com/chen08209/FlClash/releases" target="_blank">FlClash Releases</a></li>
+                        <li>一分机场图文教程：<a href="https://image.dooo.ng/t/2025/12/08/69364be33c123.webp" target="_blank">FlClash 电脑教程</a></li>
+                        <li>一分机场视频教程中心：<a href="https://web.netwiki.link/#video" target="_blank">web.netwiki.link 视频区</a></li>
+                    </ul>
+                    <ol>
+                        <li>下载对应系统的安装包并安装</li>
+                        <li>配置 → 导入订阅 URL（同安卓步骤）</li>
+                        <li>启动系统代理（或开启 TUN 模式接管全局流量）</li>
+                        <li>验证：浏览器打开 youtube.com</li>
+                    </ol>
+
+                    <h4>1.5 视频教程中心</h4>
+                    <p>所有客户端的图文教程、视频教程统一在一分机场的「使用文档中心」里，按系统分门别类：</p>
+                    <p><strong>一分机场主站：</strong><a href="https://web.netwiki.link/" target="_blank" style="font-size: 16px; font-weight: 800;">https://web.netwiki.link/</a></p>
+                    <p><strong>一分机场网盘（国内可访问）：</strong><a href="https://xiazai.yfjc.win/1" target="_blank" style="font-size: 16px; font-weight: 800;">https://xiazai.yfjc.win/1</a></p>
+                    <p>里面包含：推荐软件列表 / 软件下载地址 / 视频教程 / 图文教程 / GitHub 官方仓库链接。</p>
+                </div>
+            </details>
+
+            <details class="step">
+                <summary class="step-summary">
+                    <span class="step-num">2</span>
+                    <span class="step-title">Google 账号注册 + 海外应用安装（仅中国同事）</span>
+                    <span class="step-chevron">▶</span>
+                </summary>
+                <div class="step-body">
+                    <h4>2.1 Google 账号注册</h4>
+                    <p>注册入口：<a href="https://accounts.google.com/signup" target="_blank">accounts.google.com/signup</a></p>
+                    <p>前置条件：网络已通（任务 1 已完成）+ 一个国内手机号（用于接收 Google 验证短信）。</p>
+
+                    <h4>2.2 命名规范建议</h4>
+                    <div class="callout tip">
+                        <strong>核心原则：</strong>邮箱名看起来是一个规范的名字，而不是随便取的。<br><br>
+                        <strong>关于「韦氏拼音」：</strong>下面给的是韦氏拼音风格的样例，是为了避免出现重复名导致 Gmail 申请不到那个用户名 —— 拼音变化越多越不容易撞名。<strong>这不是强制要求用韦氏拼音</strong>，任何「姓在前名在后」的规范格式都行，关键是让别人一眼看上去专业、好记。
+                    </div>
+                    <div class="name-grid">
+                        <div class="name-card">
+                            <h4>印尼销售代表 1 · 韦氏拼音风格</h4>
+                            <div class="primary">rep1.tsai-ting@gmail.com</div>
+                            <div class="alt">备选：tsai-ting.rep1@gmail.com</div>
+                        </div>
+                        <div class="name-card">
+                            <h4>印尼销售代表 2 · 韦氏拼音风格</h4>
+                            <div class="primary">rep2.hung-li@gmail.com</div>
+                            <div class="alt">备选：hung-li.rep2@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="callout warn">
+                        <strong>命名格式约束：</strong>用户名只允许出现<strong>一个</strong>点（<code>.</code>）作为姓名分隔符，例如 <code>rep1.tsai-ting@gmail.com</code>。避免出现 <code>xxx.yyy.zzz</code> 这类多点用户名，部分海外服务会拒绝过长的用户名，建议保留 6-15 个字符以内。
+                    </div>
+
+                    <h4>2.3 海外应用安装清单</h4>
+                    <table class="app-table">
+                        <thead>
+                            <tr><th>应用</th><th>平台</th><th>用途</th><th>登录方式</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>YouTube</td><td>iOS / Android</td><td>学习产品知识、客户视频案例</td><td>Google</td></tr>
+                            <tr><td>Instagram</td><td>iOS / Android</td><td>中东/印尼客户社交渠道</td><td>Facebook / Meta</td></tr>
+                            <tr><td>Facebook</td><td>iOS / Android</td><td>客户开发、社群运营</td><td>Meta</td></tr>
+                            <tr><td>Messenger</td><td>iOS / Android</td><td>即时沟通</td><td>Meta</td></tr>
+                            <tr><td>WhatsApp</td><td>iOS / Android</td><td>印尼/中东主流沟通工具</td><td>手机号</td></tr>
+                            <tr><td>Gmail</td><td>iOS / Android</td><td>海外客户邮件</td><td>Google</td></tr>
+                            <tr><td>Gemini</td><td>iOS / Android</td><td>Google AI 助手</td><td>Google</td></tr>
+                            <tr><td>ChatGPT</td><td>iOS / Android</td><td>OpenAI AI 助手</td><td>Google / Apple ID</td></tr>
+                            <tr><td>Manus</td><td>iOS / Android</td><td>AI Agent（备选/对比）</td><td>手机号 / Google</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
+            <details class="step">
+                <summary class="step-summary">
+                    <span class="step-num">3</span>
+                    <span class="step-title">MiniMax 安装与订阅（国内版）</span>
+                    <span class="step-chevron">▶</span>
+                </summary>
+                <div class="step-body">
+                    <div class="callout">
+                        <strong>版本说明：</strong>MiniMax 分为国内版和海外版（chat.minimaxi.com 是网页版入口）。请下载国内版，原因：① 国内版的订阅套餐按月订阅、价格便宜（基础版约 ¥40-49/月）；② 海外版只能按年订阅，不适合本次短期任务试用；③ 国内版使用国内手机号注册即可。
+                    </div>
+
+                    <h4>3.1 电脑端 — MiniMax Agent 桌面端（国内版）</h4>
+                    <p><strong>官方下载地址：</strong><a href="https://agent.minimaxi.com/download" target="_blank" style="font-weight: 800; font-size: 16px;">https://agent.minimaxi.com/download</a></p>
+                    <div class="callout warn">
+                        <strong>注意：</strong>这是 MiniMax 官方下载入口，<strong>与一分机场无关</strong>。不要去一分机场网盘下载 MiniMax。
+                    </div>
+                    <p>安装步骤：</p>
+                    <ol>
+                        <li>在 <a href="https://agent.minimaxi.com/download" target="_blank">agent.minimaxi.com/download</a> 下载国内版桌面端安装包（约 300MB，安装约 3-5 分钟）</li>
+                        <li>双击安装包，按向导完成</li>
+                        <li>启动后用手机号注册账号（用国内手机号，与 Google 账号分两个手机号）</li>
+                        <li>登录后即可使用</li>
+                    </ol>
+                    <p>系统要求：Windows 10/11（64位）、macOS 12.0+ / 推荐 8GB 内存（16GB 更佳）/ 2GB 可用磁盘空间。</p>
+
+                    <h4>3.2 手机端 — MiniMax App（国内版）</h4>
+                    <table class="app-table">
+                        <thead>
+                            <tr><th>平台</th><th>链接</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>iOS（美区 App Store）</td><td>在美区 App Store 搜索 MiniMax，下载国内版</td></tr>
+                            <tr><td>安卓（国内应用市场）</td><td>国内应用宝、华为应用市场等搜索 MiniMax</td></tr>
+                            <tr><td>安卓（Google Play）</td><td><a href="https://play.google.com/store/apps/details?id=com.xproducer.yingshiai" target="_blank">play.google.com/.../com.xproducer.yingshiai</a></td></tr>
+                        </tbody>
+                    </table>
+                    <div class="callout">
+                        <strong>iOS 国内用户提示：</strong>美区 App Store 才能下载到完整版 MiniMax。先用美区 ID 登录 App Store（任务 1 已完成），再下载 MiniMax。
+                    </div>
+
+                    <h4>3.3 订阅方案选择（国内版，低于 ¥50/月）</h4>
+                    <p>MiniMax 国内版提供按月订阅的方案，包括编程模型、视频、语音、音乐、图像等多模态调用额度。海外版只能按年订阅，不适合本次短期任务使用。</p>
+                    <table class="app-table">
+                        <thead>
+                            <tr><th>计划</th><th>价格（参考）</th><th>适合</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>免费版</td><td>¥0</td><td>日常对话、文件速读、识图</td></tr>
+                            <tr><td>基础计划</td><td>约 ¥40-49/月</td><td>编程 + 多模态基础用量</td></tr>
+                            <tr><td>Plus / Pro</td><td>¥99+/月</td><td>重度编程、企业级</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="callout tip">
+                        <strong>三位同事都用国内版：</strong>国内版收费便宜，按月订阅灵活；海外版只能包年。本次短期任务建议先用国内版免费 + 基础用量按需付费模式跑两周，根据实际用量再决定是否升级。
+                    </div>
+                </div>
+            </details>
+
+            <details class="step">
+                <summary class="step-summary">
+                    <span class="step-num">4</span>
+                    <span class="step-title">美区 Apple ID 注册教程（每位 iOS 中国同事必备）</span>
+                    <span class="step-chevron">▶</span>
+                </summary>
+                <div class="step-body">
+                    <div class="callout warn">
+                        <strong>前置条件：</strong>注册美区 Apple ID 之前，<strong>必须先连上 VPN 并选美国节点</strong>，否则注册流程会被卡住或地区无法切换。
+                    </div>
+
+                    <h4>4.1 为什么必须有自己的美区 ID</h4>
+                    <ol>
+                        <li>用 Thomas 的 ID 会被 Apple 安全风控（异地多人登录）</li>
+                        <li>后续维护账号、找回密码不便</li>
+                        <li>一旦 ID 被封，影响所有共享的同事</li>
+                    </ol>
+
+                    <h4>4.2 前置准备</h4>
+                    <ul>
+                        <li>一个干净的邮箱（QQ 邮箱英文版 / Gmail）</li>
+                        <li>国内手机号（用于接收 Apple 验证码）</li>
+                        <li><strong>VPN 已连接并选了美国节点（关键）</strong></li>
+                        <li>美区免税州地址生成器（推荐 <a href="http://us.2kz.net/" target="_blank">us.2kz.net</a>）</li>
+                    </ul>
+
+                    <h4>4.3 注册流程（手机端，最方便）</h4>
+                    <ol>
+                        <li>确认 VPN 已连接、美国节点已选中（先连 VPN 再注册，否则会卡住）</li>
+                        <li>打开 Safari，访问 <a href="https://appleid.apple.com/account" target="_blank">appleid.apple.com/account</a></li>
+                        <li>填写信息：姓名英文/拼音、邮箱未被注册过、密码 8 位以上、国家/地区先选中国大陆、生日真实、手机号国内</li>
+                        <li>完成邮箱验证码 + 手机验证码，注册成功</li>
+                        <li>关键步骤：登录 appleid.apple.com → 个人信息 → 国家/地区 → 选 United States → 付款方式选 None（无）→ 账单地址用免税州地址生成器</li>
+                        <li>验证：打开 App Store，登录新 ID，能看到美区应用即成功</li>
+                    </ol>
+
+                    <h4>4.4 教程参考</h4>
+                    <ul>
+                        <li>机场 WIKI（图文）：<a href="https://wiki.yfjc.win/#article=a23" target="_blank">wiki.yfjc.win/#article=a23</a></li>
+                        <li>综合视频/图文教程中心：<a href="https://web.netwiki.link/" target="_blank">web.netwiki.link</a></li>
+                    </ul>
+                    <div class="callout warn">
+                        <strong>不要做的事：</strong>不要用美区 ID 登录 iCloud，只在 App Store 用，避免影响国内主账号的同步。
+                    </div>
+                </div>
+            </details>
+
+            <details class="step">
+                <summary class="step-summary">
+                    <span class="step-num">5</span>
+                    <span class="step-title">AI Agent 实操作业 · 三位同事共同</span>
+                    <span class="step-chevron">▶</span>
+                </summary>
+                <div class="step-body">
+                    <h4>5.1 作业一：电脑端与手机端互联</h4>
+                    <p><strong>目标：</strong>用手机 MiniMax App 远程操控电脑 MiniMax Agent。</p>
+                    <ol>
+                        <li>电脑端 MiniMax Agent → 设置 → 连接手机 → 显示二维码</li>
+                        <li>手机 MiniMax App → 扫一扫 → 绑定电脑</li>
+                        <li>测试：在手机上发指令，验证电脑是否执行</li>
+                    </ol>
+                    <div class="callout tip">
+                        <strong>验收标准：</strong>手机发指令，电脑端能在 30 秒内响应并执行。
+                    </div>
+
+                    <h4>5.2 作业二：配置 MiniMax 操控企业邮箱</h4>
+                    <p><strong>目标：</strong>让 MiniMax（Mavis）能操控公司腾讯企业邮箱，实现「给 MiniMax 发指令 → 自动生成草稿 → 人工确认后发送」的工作流。</p>
+
+                    <p><strong>怎么做：</strong>不用手把手跟教程，直接打开电脑端 MiniMax 对话框，跟它说：</p>
+
+                    <blockquote style="margin: 14px 0; padding: 14px 18px; background: rgba(0,113,227,0.08); border-left: 4px solid var(--blue); border-radius: 10px; color: #064c99; font-size: 15px; line-height: 1.65;">
+                        「请帮我配置腾讯企业邮箱 IMAP/SMTP 接入，目标邮箱是 [你的嘉豪企业邮箱地址]，需要先生成草稿、人工确认后再发送，不要直接发邮件。」
+                    </blockquote>
+
+                    <p>然后跟着它的提示一步步完成设置就行。过程中遇到任何报错或者不确定的，把错误信息贴给它，让它帮你排查。</p>
+
+                    <p><strong>核心约束</strong>（务必在配置时跟 MiniMax 说清楚）：</p>
+                    <ul>
+                        <li>默认走「先生成草稿 → 人工确认后才发送」流程</li>
+                        <li>不要授权 MiniMax 直接发送邮件给客户</li>
+                    </ul>
+
+                    <h4>5.3 作业三：增加员工 + 理解 CEO 派任务模式</h4>
+                    <p>MiniMax Agent（Mavis）支持「CEO + 多个员工 Agent」的协作模式。这个模式解决一个问题：复杂任务一个人忙不过来，拆给多个 AI 员工并行干更快。</p>
+
+                    <div class="ceo-flow">
+                        <div class="ceo-node">
+                            <div class="emoji">👤</div>
+                            <div class="role">CEO</div>
+                            <div class="desc">接收任务、评估、分配、协调</div>
+                        </div>
+                        <div class="ceo-arrow">→</div>
+                        <div class="ceo-node">
+                            <div class="emoji">🤖</div>
+                            <div class="role">员工 Agent</div>
+                            <div class="desc">研究/翻译/法务/编程</div>
+                        </div>
+                        <div class="ceo-arrow">→</div>
+                        <div class="ceo-node">
+                            <div class="emoji">📊</div>
+                            <div class="role">汇总</div>
+                            <div class="desc">CEO 整合给到你</div>
+                        </div>
+                    </div>
+
+                    <p><strong>具体玩法 — 创建翻译员工 + 法务员工：</strong></p>
+                    <ol>
+                        <li>打开 MiniMax Agent → 左侧「专家」或「技能」页面 → 点击新建专家，创建两个</li>
+                        <li><strong>翻译员工</strong>：专长中英双向翻译、海外客户邮件回复；工具：可调用 ChatGPT / DeepL；工作流：接收英文邮件 → 自动起草回复 → 给你确认</li>
+                        <li><strong>法务员工</strong>：专长印尼/中东合同审核、合规检查；工具：合同模板库、风险关键词库；工作流：上传合同 → 标记风险条款 → 输出审核报告</li>
+                        <li>测试 CEO 派任务：在 MiniMax 对话框输入指令，让它把印尼客户的英文合同翻译成中文并标出风险条款。观察 MiniMax 是否自动调用了翻译员工和法务员工，最终输出合并结果</li>
+                    </ol>
+                    <div class="callout tip">
+                        <strong>验收标准：</strong>能描述出 CEO → 员工 → 汇总的工作流，并解释为什么这个模式比单 AI 更好用。
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </div>
+</section>
+
+<!-- 命名规范单独展示 -->
+<section id="names">
+    <div class="section-head">
+        <div>
+            <div class="section-kicker">Part 4 · 命名规范</div>
+            <h2 class="section-title">邮箱命名 · 韦氏拼音 · 单点</h2>
+        </div>
+        <p class="section-desc">让海外客户一眼看出是规范的中国人名，且 Gmail 申请时不容易撞名。</p>
+    </div>
+
+    <div class="glass-card">
+        <div class="name-grid">
+            <div class="name-card">
+                <h4>印尼销售代表 1</h4>
+                <div class="primary">rep1.tsai-ting@gmail.com</div>
+                <div class="alt">备选：tsai-ting.rep1@gmail.com</div>
+            </div>
+            <div class="name-card">
+                <h4>印尼销售代表 2</h4>
+                <div class="primary">rep2.hung-li@gmail.com</div>
+                <div class="alt">备选：hung-li.rep2@gmail.com</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 答疑机制 -->
+<section id="meeting">
+    <div class="section-head">
+        <div>
+            <div class="section-kicker">Part 5 · 答疑</div>
+            <h2 class="section-title">答疑机制 · 灵活安排</h2>
+        </div>
+        <p class="section-desc">文档说不清楚的，下次会议当面聊。</p>
+    </div>
+
+    <div class="glass-card">
+        <div class="meeting-card">
+            <div class="title">线上答疑会</div>
+            <span class="time">尽量每周五下午 5-6 点（印尼时间 / 北京时间 18:00-19:00）</span>
+            <div style="font-size: 14px; color: var(--text); line-height: 1.7;">
+                集中解决文档说不清楚的问题。每位同事现场展示完成情况，有问题当场讨论。
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>但不固定</strong>，每次会前由销售助理在群里跟大家确认当周开会时间，不合适就顺移到下周五。
+        </div>
+
+        <div class="callout">
+            <strong>日常答疑：</strong>有问题随时在群里问，Thomas 有空会在线解答。也可以问国内的豆包（字节跳动 AI 助手）作为辅助参考。
+        </div>
+    </div>
+</section>
+
+<!-- 六、FAQ -->
+<section id="faq">
+    <div class="section-head">
+        <div>
+            <div class="section-kicker">Part 6 · FAQ</div>
+            <h2 class="section-title">常见问题 · 6 个</h2>
+        </div>
+        <p class="section-desc">踩过的坑提前讲，省得返工。</p>
+    </div>
+
+    <div class="faq-list">
+        <details class="faq-item" open>
+            <summary class="faq-q">网络配置好了但 YouTube 还是加载不出来？</summary>
+            <div class="faq-a">① 切换节点试试；② 检查订阅链接是否过期（联系 Thomas 重发）；③ 检查是否开启了系统代理。</div>
+        </details>
+        <details class="faq-item">
+            <summary class="faq-q">Loon 下载后提示未受信任的开发者？</summary>
+            <div class="faq-a">设置 → 通用 → VPN 与设备管理 → 信任 Loon 开发者。</div>
+        </details>
+        <details class="faq-item">
+            <summary class="faq-q">美区 ID 注册时提示邮箱已被使用？</summary>
+            <div class="faq-a">这个邮箱之前注册过 Apple ID。换个邮箱，或用全新 Gmail。</div>
+        </details>
+        <details class="faq-item">
+            <summary class="faq-q">MiniMax 订阅比 ¥50 贵怎么办？</summary>
+            <div class="faq-a">先用免费版，用量按需付费，观察两周再决定。个人用户 ¥30-50 基础套餐通常够用。</div>
+        </details>
+        <details class="faq-item">
+            <summary class="faq-q">手机端 MiniMax 连不上电脑端？</summary>
+            <div class="faq-a">① 确保两台设备登录同一账号；② 电脑端防火墙允许 MiniMax Agent 通过；③ 重新扫码绑定。</div>
+        </details>
+        <details class="faq-item">
+            <summary class="faq-q">销售助理也需要注册美区 Apple ID 吗？</summary>
+            <div class="faq-a"><strong>不需要</strong>。销售助理在印尼，印尼区 Apple ID 已经能下载非常多常用软件（包括 Loon 等），无需特殊账号。美区 Apple ID 只针对使用 iOS 系统的中国同事。</div>
+        </details>
+    </div>
+</section>
+
+<!-- 七、相关链接 -->
+<section id="links">
+    <div class="section-head">
+        <div>
+            <div class="section-kicker">Part 7 · 资源</div>
+            <h2 class="section-title">相关链接 · 一张表</h2>
+        </div>
+        <p class="section-desc">所有外部资源都在这里，方便复制粘贴。</p>
+    </div>
+
+    <div class="link-grid">
+        <a class="link-card" href="https://wiki.yfjc.win/#article=a23" target="_blank">
+            <span class="icon">📚</span>
+            <span>机场 WIKI · 美区 ID 教程</span>
+        </a>
+        <a class="link-card" href="https://web.netwiki.link/" target="_blank">
+            <span class="icon">📖</span>
+            <span>一分机场使用文档中心</span>
+        </a>
+        <a class="link-card" href="https://xiazai.yfjc.win/1" target="_blank">
+            <span class="icon">📦</span>
+            <span>一分机场网盘 · 国内下载</span>
+        </a>
+        <a class="link-card" href="https://xiazai.yfjc.win/1/%E5%AE%89%E5%8D%93%E5%AE%A2%E6%88%B7%E7%AB%AF" target="_blank">
+            <span class="icon">📱</span>
+            <span>一分机场网盘 · 安卓客户端（FlClash-0.8.94.apk）</span>
+        </a>
+        <a class="link-card" href="https://image.dooo.ng/t/2025/12/08/69364ca30de7c.webp" target="_blank">
+            <span class="icon">📱</span>
+            <span>FlClash 安卓图文教程</span>
+        </a>
+        <a class="link-card" href="https://image.dooo.ng/t/2025/12/08/69364be33c123.webp" target="_blank">
+            <span class="icon">💻</span>
+            <span>FlClash 电脑图文教程</span>
+        </a>
+        <a class="link-card" href="https://github.com/chen08209/FlClash/releases" target="_blank">
+            <span class="icon">⭐</span>
+            <span>FlClash GitHub 官方</span>
+        </a>
+        <a class="link-card" href="https://chat.minimaxi.com/" target="_blank">
+            <span class="icon">🤖</span>
+            <span>MiniMax 网页版入口</span>
+        </a>
+        <a class="link-card" href="https://agent.minimaxi.com/download" target="_blank">
+            <span class="icon">⬇️</span>
+            <span>MiniMax 桌面端下载（国内版）</span>
+        </a>
+        <a class="link-card" href="https://play.google.com/store/apps/details?id=com.xproducer.yingshiai" target="_blank">
+            <span class="icon">📲</span>
+            <span>MiniMax App · Google Play</span>
+        </a>
+        <a class="link-card" href="https://appleid.apple.com/account" target="_blank">
+            <span class="icon">🍎</span>
+            <span>Apple ID 注册页</span>
+        </a>
+        <a class="link-card" href="https://accounts.google.com/signup" target="_blank">
+            <span class="icon">✉️</span>
+            <span>Google 账号注册</span>
+        </a>
+        <a class="link-card" href="http://us.2kz.net/" target="_blank">
+            <span class="icon">🇺🇸</span>
+            <span>美国地址生成器</span>
+        </a>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <strong>印尼团队 · 第一次小组任务</strong><br>
+    由 MiniMax 智能体起草 · v3.0 · 2026-08-12<br>
+    文档永久链接 · GitHub Pages 部署
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo(0,0)" aria-label="回到顶部">↑</button>
+
+<script>
+window.addEventListener('scroll', () => {
+    document.getElementById('backTop').classList.toggle('show', window.scrollY > 420);
+}, { passive: true });
+</script>
+
+</body>
+</html>
