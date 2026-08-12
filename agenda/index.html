@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1F3864">
+<title>Thomas 近期行程 · 2026-08-12 → 2026-08-21</title>
+<style>
+:root {
+  --cream: #FFF9E6;
+  --cream-deep: #F5EFD8;
+  --navy: #1F3864;
+  --navy-light: #2E5090;
+  --red-tag: #CC3333;
+  --orange-tag: #E67E22;
+  --green-confirm: #4F8B3A;
+  --blue-accent: #2E75B6;
+  --gray-soft: #F2F2F2;
+  --gray-text: #555;
+  --border: #E0D9C0;
+  --shadow-card: 0 2px 8px rgba(31, 56, 100, 0.08);
+  --shadow-header: 0 4px 16px rgba(31, 56, 100, 0.18);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, var(--cream) 0%, var(--cream-deep) 100%);
+  color: #222;
+  line-height: 1.6;
+  padding: 24px 20px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.container { max-width: 960px; margin: 0 auto; }
+.header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color: var(--cream);
+  padding: 32px 36px;
+  border-radius: 14px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-header);
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255, 249, 230, 0.10) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.5px; }
+.header .subtitle { font-size: 15px; opacity: 0.92; margin-bottom: 18px; }
+.header .period { font-size: 14px; opacity: 0.85; letter-spacing: 0.4px; font-family: "SF Mono", Consolas, monospace; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 22px;
+}
+.stat {
+  background: rgba(255, 249, 230, 0.12);
+  border: 1px solid rgba(255, 249, 230, 0.22);
+  padding: 14px 12px;
+  border-radius: 10px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+.stat .num { font-size: 26px; font-weight: 800; color: var(--cream); line-height: 1.1; }
+.stat .label { font-size: 12px; opacity: 0.78; margin-top: 4px; letter-spacing: 0.5px; }
+.stat.danger .num { color: #FF8C8C; }
+.stat.warn .num { color: #FFB87A; }
+.stat.ok .num { color: #8FE39D; }
+
+.day-group { margin-bottom: 26px; }
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding: 0 4px;
+}
+.day-date {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  min-width: 84px;
+  text-align: center;
+}
+.day-info { flex: 1; font-size: 14px; color: var(--gray-text); }
+.day-info .lunar { margin-left: 10px; opacity: 0.65; font-size: 13px; }
+.today-badge {
+  background: var(--red-tag);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(204, 51, 51, 0.30);
+}
+.day-cards { display: flex; flex-direction: column; gap: 10px; }
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--blue-accent);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: var(--shadow-card);
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(31, 56, 100, 0.12); }
+.card.is-today {
+  background: linear-gradient(to right, #FFFBE8 0%, white 50%);
+  border-left-color: var(--navy);
+  border-left-width: 6px;
+}
+.card.is-conflict {
+  border-left-color: var(--red-tag);
+  background: linear-gradient(to right, #FFF5F5 0%, white 60%);
+}
+.card.is-deadline {
+  border-left-color: var(--orange-tag);
+  background: linear-gradient(to right, #FFF8F0 0%, white 60%);
+}
+.card.is-video { border-left-color: var(--green-confirm); }
+.card.is-conflict.is-deadline {
+  background: linear-gradient(to right, #FFF0E8 0%, white 60%);
+  border-left-color: var(--red-tag);
+  border-left-width: 6px;
+}
+
+.card-time {
+  min-width: 100px;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 14px;
+  line-height: 1.5;
+  padding-top: 1px;
+  font-family: "SF Mono", Consolas, "Microsoft YaHei", monospace;
+  letter-spacing: 0.3px;
+}
+.card-time .arrow { opacity: 0.5; font-size: 11px; padding: 1px 0; }
+.card-time .end-tag {
+  display: inline-block;
+  font-size: 11px;
+  background: var(--orange-tag);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.card-body { flex: 1; min-width: 0; }
+.card-title {
+  font-size: 15px;
+  color: #222;
+  line-height: 1.55;
+  word-break: break-word;
+  font-weight: 500;
+}
+.card-meta {
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.badge.type { background: #F0EDE0; color: #6B5E2E; }
+.badge.conflict { background: var(--red-tag); color: white; }
+.badge.video { background: var(--green-confirm); color: white; }
+.badge.deadline { background: var(--orange-tag); color: white; }
+
+.legend {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 28px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--gray-text);
+  align-items: center;
+}
+.legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+.legend-dot.dot-today { background: var(--navy); }
+.legend-dot.dot-conflict { background: var(--red-tag); }
+.legend-dot.dot-deadline { background: var(--orange-tag); }
+.legend-dot.dot-video { background: var(--green-confirm); }
+.legend-dot.dot-normal { background: var(--blue-accent); }
+
+.footer {
+  text-align: center;
+  padding: 24px 16px 12px;
+  font-size: 12px;
+  color: var(--gray-text);
+  opacity: 0.7;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 720px) {
+  body { padding: 14px 12px; }
+  .header { padding: 22px 20px; border-radius: 12px; }
+  .header h1 { font-size: 22px; }
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .stat { padding: 10px 8px; }
+  .stat .num { font-size: 22px; }
+  .card { padding: 12px 14px; gap: 12px; border-radius: 8px; }
+  .card-time { min-width: 80px; font-size: 13px; }
+  .card-title { font-size: 14px; }
+  .day-date { min-width: 76px; padding: 6px 12px; font-size: 14px; }
+  .legend { padding: 12px 14px; gap: 12px; }
+}
+@media print {
+  body { background: white; padding: 0; }
+  .header { box-shadow: none; }
+  .card { break-inside: avoid; box-shadow: none; }
+  .card:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>📅 Thomas 近期行程</h1>
+    <div class="subtitle">印尼市场开发 · 嘉豪合资公司周会</div>
+    <div class="period">2026-08-12 → 2026-08-21 · 印尼时间 WIB (UTC+7)</div>
+    <div class="stats">
+      <div class="stat">
+        <div class="num">21</div>
+        <div class="label">总事项</div>
+      </div>
+      <div class="stat danger">
+        <div class="num">2</div>
+        <div class="label">时间冲突</div>
+      </div>
+      <div class="stat warn">
+        <div class="num">2</div>
+        <div class="label">截止事项</div>
+      </div>
+      <div class="stat ok">
+        <div class="num">4</div>
+        <div class="label">视频会议</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="agenda"></div>
+
+  <div class="legend">
+    <span style="font-weight:600;color:var(--navy);">图例：</span>
+    <span class="legend-item"><span class="legend-dot dot-normal"></span> 普通事项</span>
+    <span class="legend-item"><span class="legend-dot dot-today"></span> 今日</span>
+    <span class="legend-item"><span class="legend-dot dot-conflict"></span> 时间冲突</span>
+    <span class="legend-item"><span class="legend-dot dot-deadline"></span> 截止事项</span>
+    <span class="legend-item"><span class="legend-dot dot-video"></span> 视频会议</span>
+  </div>
+
+  <div class="footer">
+    生成于 2026-08-12 · 数据源：钉钉日历截图 · Mavis for Thomas
+  </div>
+
+</div>
+
+<script>
+const events = [
+  { date: "2026-08-12", weekday_cn: "周三", lunar: "六月三十", is_today: true, is_deadline: false, start: "09:00", end: "10:00", title: "给新加坡的姑娘发邮件介绍案例介绍报价", type: "邮件", icon: "📧", is_conflict: false, is_video: false },
+  { date: "2026-08-12", weekday_cn: "周三", lunar: "六月三十", is_today: true, is_deadline: false, start: "10:00", end: "11:00", title: "Thomas · ZULKARNAEN 沟通安排", type: "沟通", icon: "💬", is_conflict: false, is_video: false },
+  { date: "2026-08-12", weekday_cn: "周三", lunar: "六月三十", is_today: true, is_deadline: false, start: "14:00", end: "15:00", title: "千亿商行（向总与伟坚电话沟通）", type: "电话", icon: "📞", is_conflict: false, is_video: false },
+  { date: "2026-08-12", weekday_cn: "周三", lunar: "六月三十", is_today: true, is_deadline: true, start: "17:00", end: "截止", title: "应该是的，我再和霍总确认下通知你", type: "截止", icon: "⏰", is_conflict: false, is_video: false },
+  { date: "2026-08-13", weekday_cn: "周四", lunar: "七月初一", is_today: false, is_deadline: false, start: "09:00", end: "10:00", title: "sir Calvin 见面 · 美花推荐的印尼客户", type: "见面", icon: "🤝", is_conflict: false, is_video: false },
+  { date: "2026-08-13", weekday_cn: "周四", lunar: "七月初一", is_today: false, is_deadline: false, start: "11:00", end: "12:00", title: "面试 with kedher（协助 james）", type: "面试", icon: "👤", is_conflict: true, is_video: false },
+  { date: "2026-08-13", weekday_cn: "周四", lunar: "七月初一", is_today: false, is_deadline: false, start: "11:30", end: "12:30", title: "面试 阿联酋中国人", type: "面试", icon: "👤", is_conflict: true, is_video: false },
+  { date: "2026-08-13", weekday_cn: "周四", lunar: "七月初一", is_today: false, is_deadline: false, start: "12:30", end: "13:30", title: "午餐 Solaria（200家连锁）本地菜&汉堡炸鸡意面", type: "午餐", icon: "🍴", is_conflict: false, is_video: false },
+  { date: "2026-08-13", weekday_cn: "周四", lunar: "七月初一", is_today: false, is_deadline: false, start: "15:00", end: "17:00", title: "陌拜 solaria or 永兴总部（先接 nola）", type: "陌拜", icon: "🚶", is_conflict: false, is_video: false },
+  { date: "2026-08-13", weekday_cn: "周四", lunar: "七月初一", is_today: false, is_deadline: false, start: "18:30", end: "19:30", title: "晚餐（印尼华人喜欢的中餐厅）", type: "晚餐", icon: "🍴", is_conflict: false, is_video: false },
+  { date: "2026-08-14", weekday_cn: "周五", lunar: "七月初二", is_today: false, is_deadline: false, start: "11:00", end: "13:00", title: "拜托拜托经销商", type: "拜访", icon: "🤝", is_conflict: false, is_video: false },
+  { date: "2026-08-14", weekday_cn: "周五", lunar: "七月初二", is_today: false, is_deadline: false, start: "13:30", end: "16:30", title: "拜访餐饮终端客户", type: "拜访", icon: "🚶", is_conflict: false, is_video: false },
+  { date: "2026-08-14", weekday_cn: "周五", lunar: "七月初二", is_today: false, is_deadline: false, start: "16:30", end: "17:30", title: "完成品类地图 - 开会资料准备", type: "准备", icon: "📋", is_conflict: false, is_video: false },
+  { date: "2026-08-14", weekday_cn: "周五", lunar: "七月初二", is_today: false, is_deadline: false, start: "17:30", end: "18:30", title: "IDN 新人第一次会：环境配置及基础 agent 使用", type: "视频会议", icon: "📹", is_conflict: false, is_video: true },
+  { date: "2026-08-15", weekday_cn: "周六", lunar: "七月初三", is_today: false, is_deadline: true, start: "09:00", end: "截止", title: "@黎量 屯河没有给时间，笑厨要 8月15以后，亚克西说月底", type: "截止", icon: "⏰", is_conflict: false, is_video: false },
+  { date: "2026-08-17", weekday_cn: "周一", lunar: "七月初五", is_today: false, is_deadline: false, start: "09:00", end: "10:00", title: "中国销售培训生入职印尼行政事项", type: "行政", icon: "📋", is_conflict: false, is_video: false },
+  { date: "2026-08-18", weekday_cn: "周二", lunar: "七月初六", is_today: false, is_deadline: false, start: "09:30", end: "10:30", title: "印尼嘉豪品类讨论", type: "讨论", icon: "💬", is_conflict: false, is_video: false },
+  { date: "2026-08-18", weekday_cn: "周二", lunar: "七月初六", is_today: false, is_deadline: false, start: "12:30", end: "13:30", title: "印尼合资公司周会", type: "视频会议", icon: "📹", is_conflict: false, is_video: true },
+  { date: "2026-08-18", weekday_cn: "周二", lunar: "七月初六", is_today: false, is_deadline: false, start: "14:00", end: "15:00", title: "标签设计 offline visit creative", type: "创意", icon: "🎨", is_conflict: false, is_video: false },
+  { date: "2026-08-18", weekday_cn: "周二", lunar: "七月初六", is_today: false, is_deadline: false, start: "17:30", end: "18:30", title: "印尼周例会", type: "视频会议", icon: "📹", is_conflict: false, is_video: true },
+  { date: "2026-08-21", weekday_cn: "周五", lunar: "七月初九", is_today: false, is_deadline: false, start: "09:00", end: "10:00", title: "带清真与不带清真产品出口印尼周例会", type: "视频会议", icon: "📹", is_conflict: false, is_video: true }
+];
+
+function render() {
+  const byDate = {};
+  events.forEach(e => {
+    if (!byDate[e.date]) byDate[e.date] = [];
+    byDate[e.date].push(e);
+  });
+  const dates = Object.keys(byDate).sort();
+
+  const container = document.getElementById('agenda');
+  container.innerHTML = dates.map(date => {
+    const items = byDate[date];
+    const first = items[0];
+    const todayBadge = first.is_today ? '<span class="today-badge">今</span>' : '';
+    const lunar = first.lunar ? `<span class="lunar">农历 ${first.lunar}</span>` : '';
+
+    const cards = items.map(e => {
+      const classes = ['card'];
+      if (e.is_today) classes.push('is-today');
+      if (e.is_conflict) classes.push('is-conflict');
+      if (e.is_deadline) classes.push('is-deadline');
+      if (e.is_video) classes.push('is-video');
+
+      const badges = [];
+      badges.push(`<span class="badge type">${e.icon} ${e.type}</span>`);
+      if (e.is_conflict) badges.push(`<span class="badge conflict">⚠ 时间冲突</span>`);
+      if (e.is_video) badges.push(`<span class="badge video">📹 视频</span>`);
+      if (e.is_deadline) badges.push(`<span class="badge deadline">⏰ 截止</span>`);
+
+      const endLabel = e.end === '截止'
+        ? `<span class="end-tag">截止</span>`
+        : `<div class="arrow">↓</div>${e.end}`;
+
+      return `
+        <div class="${classes.join(' ')}">
+          <div class="card-time">${e.start}${endLabel}</div>
+          <div class="card-body">
+            <div class="card-title">${e.title}</div>
+            <div class="card-meta">${badges.join('')}</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    const d = new Date(date + 'T00:00:00');
+    const monthDay = `${d.getMonth() + 1}月${d.getDate()}日`;
+
+    return `
+      <div class="day-group">
+        <div class="day-header">
+          <div class="day-date">${monthDay}</div>
+          <div class="day-info">${first.weekday_cn}${lunar}</div>
+          ${todayBadge}
+        </div>
+        <div class="day-cards">${cards}</div>
+      </div>`;
+  }).join('');
+}
+
+render();
+</script>
+</body>
+</html>
