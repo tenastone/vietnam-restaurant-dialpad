@@ -247,12 +247,16 @@
 
 <!-- 协作备注工具栏 -->
 <div class="sync-bar">
-  <span class="sync-label">📋 协作备注:</span>
+  <span class="sync-label">📋 协作:</span>
+  <label style="font-size:12px;color:#666;display:flex;align-items:center;gap:4px;">
+    👤 我是:
+    <input type="text" id="authorInput" placeholder="Thomas" value="Thomas" onchange="updateAuthor()" style="padding:6px 8px;border:1px solid #DDD;border-radius:4px;font-size:13px;width:80px;font-family:inherit;">
+  </label>
   <button onclick="exportJSON()">📤 导出JSON</button>
-  <button onclick="importJSON()">📥 导入JSON</button>
+  <button onclick="importJSON()">📥 导入JSON (合并)</button>
   <button onclick="copyShareLink()">🔗 复制分享链接</button>
   <button onclick="clearAllNotes()">🗑 清空</button>
-  <span class="sync-status" id="syncStatus">本地 <span id="noteCount">0</span> 条</span>
+  <span class="sync-status" id="syncStatus">本地 <span id="noteCount">0</span> 条 · <span id="authorCount">0</span> 位作者</span>
 </div>
 
 <!-- 顶部 Filter 栏 -->
@@ -342,7 +346,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::VJ Supplies Euronations (厨房设备)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::VJ Supplies Euronations (厨房设备)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -403,7 +407,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Central Hospitality (中泰合资)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Central Hospitality (中泰合资)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -464,7 +468,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Genesis & Co (厨房设备)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Genesis & Co (厨房设备)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -525,7 +529,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::FFT Asia (Food & Beverage Technology)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::FFT Asia (Food & Beverage Technology)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -586,7 +590,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Codara Kitchen (中国出海设备厂)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Codara Kitchen (中国出海设备厂)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -647,7 +651,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Healthy Boy Sauce (健康男孩酱料)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Healthy Boy Sauce (健康男孩酱料)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -708,7 +712,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Silom Food Services', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Silom Food Services', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -769,7 +773,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Thai President Foods (泰统一)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Thai President Foods (泰统一)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -830,7 +834,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Ajinomoto Betagro Frozen Foods (味之素-正大合资)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Ajinomoto Betagro Frozen Foods (味之素-正大合资)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -891,7 +895,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Universal Ceramics (皇家瓷器代理)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Universal Ceramics (皇家瓷器代理)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -952,7 +956,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Quality Ceramic (优质陶瓷)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Quality Ceramic (优质陶瓷)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1013,7 +1017,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Royal Porcelain Public Company (皇家瓷器上市公司)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Royal Porcelain Public Company (皇家瓷器上市公司)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1074,7 +1078,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Siam Makro (万客隆)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Siam Makro (万客隆)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1135,7 +1139,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::3sixty Food', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::3sixty Food', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1196,7 +1200,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Berli Jucker (BJC)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Berli Jucker (BJC)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1257,7 +1261,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Central Food Retail (Tops)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国餐饮类经销商联系信息::Central Food Retail (Tops)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1321,7 +1325,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Café Amazon (亚马逊咖啡)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Café Amazon (亚马逊咖啡)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1382,7 +1386,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::KFC Thailand (肯德基)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::KFC Thailand (肯德基)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1443,7 +1447,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::MK Restaurant (MK 火锅)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::MK Restaurant (MK 火锅)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1504,7 +1508,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::PunThai Coffee (普泰咖啡)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::PunThai Coffee (普泰咖啡)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1565,7 +1569,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Inthanin Coffee (因塔宁咖啡)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Inthanin Coffee (因塔宁咖啡)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1626,7 +1630,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Starbucks Thailand (星巴克泰国)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Starbucks Thailand (星巴克泰国)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1687,7 +1691,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Black Canyon Coffee (黑峡谷咖啡)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Black Canyon Coffee (黑峡谷咖啡)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1748,7 +1752,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Central Restaurants Group (CRG)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Central Restaurants Group (CRG)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1809,7 +1813,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::RosDee (调味品)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::RosDee (调味品)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1870,7 +1874,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Mama Noodles (妈妈牌方便面)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Mama Noodles (妈妈牌方便面)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1931,7 +1935,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::S&P Restaurants (S&P 餐厅)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::S&P Restaurants (S&P 餐厅)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -1992,7 +1996,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Swensen's (斯旺森)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Swensen's (斯旺森)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2053,7 +2057,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Pizza Hut Thailand (必胜客)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Pizza Hut Thailand (必胜客)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2114,7 +2118,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Laem Chareon Seafood (蓝嘉龙海鲜)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Laem Chareon Seafood (蓝嘉龙海鲜)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2175,7 +2179,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Mixue (蜜雪冰城)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Mixue (蜜雪冰城)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2236,7 +2240,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Oishi (大石日本料理)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Oishi (大石日本料理)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2297,7 +2301,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Pearly Tea', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Pearly Tea', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2358,7 +2362,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Sizzler Thailand (西式牛排)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('泰国主要连锁餐厅品牌::Sizzler Thailand (西式牛排)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2422,7 +2426,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Chop Chop Cook Shop', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Chop Chop Cook Shop', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2483,7 +2487,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Nai Ek Roll Noodle (Nak Eik 卷面)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Nai Ek Roll Noodle (Nak Eik 卷面)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2544,7 +2548,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Lao Tang Braised Goose (老堂卤鹅)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Lao Tang Braised Goose (老堂卤鹅)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2605,7 +2609,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Cathay Fish Maw (国泰鱼鳔汤)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Cathay Fish Maw (国泰鱼鳔汤)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2666,7 +2670,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::T&K Seafood (T&K 海鲜)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::T&K Seafood (T&K 海鲜)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2727,7 +2731,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Lek & Rut Seafood (Lek & Rut 海鲜)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Lek & Rut Seafood (Lek & Rut 海鲜)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2788,7 +2792,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Laoteng (潮州老店)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Laoteng (潮州老店)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2849,7 +2853,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Her Cheun Fong (茶餐厅)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Her Cheun Fong (茶餐厅)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2910,7 +2914,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::The Mustang Blu', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::The Mustang Blu', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -2971,7 +2975,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Charm Noodle (招牌黑酱油拌面)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Charm Noodle (招牌黑酱油拌面)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3032,7 +3036,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Jek Pui Curry (红板凳咖喱)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Jek Pui Curry (红板凳咖喱)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3093,7 +3097,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Jok's Kitchen (粥店)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Jok's Kitchen (粥店)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3154,7 +3158,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Kor Chun Huad (郭春华)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Kor Chun Huad (郭春华)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3215,7 +3219,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Guay Jub Uan Pochana (河粉卷)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Guay Jub Uan Pochana (河粉卷)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3276,7 +3280,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Pork Leg with Peanut Jae Ta (花生猪脚)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中餐厅信息::Pork Leg with Peanut Jae Ta (花生猪脚)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3340,7 +3344,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang Yaowarat 旗舰店 (王中王)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang Yaowarat 旗舰店 (王中王)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3401,7 +3405,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Lim Hiang Ha (林香虾)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Lim Hiang Ha (林香虾)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3462,7 +3466,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Chinese Grocery Shop (Yaowarat 中国杂货)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Chinese Grocery Shop (Yaowarat 中国杂货)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3523,7 +3527,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::L Yawaraj Str (L 耀华力)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::L Yawaraj Str (L 耀华力)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3584,7 +3588,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Ho Chia (หอเจี๊ยะ)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Ho Chia (หอเจี๊ยะ)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3645,7 +3649,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Heng Heng Supermarket (恒恒超市)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Heng Heng Supermarket (恒恒超市)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3706,7 +3710,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Lor Yaowarat Bangkok (耀华力后巷)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Lor Yaowarat Bangkok (耀华力后巷)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3767,7 +3771,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang CentralWorld (王中王 CentralWorld)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang CentralWorld (王中王 CentralWorld)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3828,7 +3832,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang MBK (王中王 MBK)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang MBK (王中王 MBK)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3889,7 +3893,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang Terminal 21 Rama 3 (王中王 Terminal 21)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang Terminal 21 Rama 3 (王中王 Terminal 21)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -3950,7 +3954,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang Silom Edge (王中王 Silom Edge)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang Silom Edge (王中王 Silom Edge)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4011,7 +4015,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang Chulalongkorn (王中王 朱拉)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::Wang Zhong Wang Chulalongkorn (王中王 朱拉)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4072,7 +4076,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::合記林真香 (Hup Kee)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷 Yaowarat 唐人街中国超市联系信息::合記林真香 (Hup Kee)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4136,7 +4140,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Capella Bangkok (嘉佩乐)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Capella Bangkok (嘉佩乐)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4197,7 +4201,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Mandarin Oriental Bangkok (文华东方)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Mandarin Oriental Bangkok (文华东方)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4258,7 +4262,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Four Seasons Bangkok at Chao Phraya River (四季)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Four Seasons Bangkok at Chao Phraya River (四季)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4319,7 +4323,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::The Siam (暹罗酒店)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::The Siam (暹罗酒店)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4380,7 +4384,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Anantara Riverside Bangkok Resort (安纳塔拉)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Anantara Riverside Bangkok Resort (安纳塔拉)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4441,7 +4445,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Park Hyatt Bangkok (柏悦)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Park Hyatt Bangkok (柏悦)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4502,7 +4506,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Rosewood Bangkok (瑰丽)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Rosewood Bangkok (瑰丽)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4563,7 +4567,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Hilton Bangkok (希尔顿)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Hilton Bangkok (希尔顿)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4624,7 +4628,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Marriott Marquis Queen's Park (万豪)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Marriott Marquis Queen's Park (万豪)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4685,7 +4689,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Sofitel Bangkok Sukhumvit (雅高)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Sofitel Bangkok Sukhumvit (雅高)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4746,7 +4750,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::InterContinental Bangkok (洲际)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::InterContinental Bangkok (洲际)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4807,7 +4811,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Lotte Hotel Bangkok (乐天)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Lotte Hotel Bangkok (乐天)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4868,7 +4872,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Banyan Tree Bangkok (悦榕庄)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Banyan Tree Bangkok (悦榕庄)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4929,7 +4933,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Shangri-La Bangkok (香格里拉)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Shangri-La Bangkok (香格里拉)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -4990,7 +4994,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::JW Marriott Hotel Bangkok (JW 万豪)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::JW Marriott Hotel Bangkok (JW 万豪)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -5051,7 +5055,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::The Sukhothai Bangkok (素可泰)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::The Sukhothai Bangkok (素可泰)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -5112,7 +5116,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Siam Kempinski Hotel Bangkok (凯宾斯基)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Siam Kempinski Hotel Bangkok (凯宾斯基)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -5173,7 +5177,7 @@
   </div>
   <div class="call-log-row row-stacked">
     <label>约见</label>
-    <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Centara Grand at CentralWorld (盛泰乐)', this)">
+    <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日 @ InterCon" oninput="onNoteChange('曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表)::Centara Grand at CentralWorld (盛泰乐)', this)">
   </div>
   <div class="call-log-row row-stacked">
     <label>备注</label>
@@ -5267,10 +5271,41 @@ function saveNotes(notes) {
 function updateNoteCount() {
   const notes = loadNotes();
   const count = Object.keys(notes).length;
+  // 统计唯一作者数
+  const authors = new Set();
+  for (const k of Object.keys(notes)) {
+    const by = notes[k].by || notes[k]._by;
+    if (by) authors.add(by);
+  }
+  const authorCount = authors.size;
   const el = document.getElementById('noteCount');
   if (el) el.textContent = count;
+  const ac = document.getElementById('authorCount');
+  if (ac) ac.textContent = authorCount;
   const st = document.getElementById('syncStatus');
-  if (st) st.innerHTML = '本地 <span id="noteCount">' + count + '</span> 条';
+  if (st) st.innerHTML = '本地 <span id="noteCount">' + count + '</span> 条 · <span id="authorCount">' + authorCount + '</span> 位作者';
+}
+
+function getAuthor() {
+  const inp = document.getElementById('authorInput');
+  return (inp && inp.value.trim()) ? inp.value.trim() : 'Thomas';
+}
+
+function updateAuthor() {
+  try { localStorage.setItem('thailand_author', getAuthor()); }
+  catch(e) {}
+}
+
+function formatTimeAgo(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  const now = new Date();
+  const diff = (now - d) / 1000; // 秒
+  if (diff < 60) return '刚刚';
+  if (diff < 3600) return Math.floor(diff/60) + ' 分钟前';
+  if (diff < 86400) return Math.floor(diff/3600) + ' 小时前';
+  if (diff < 604800) return Math.floor(diff/86400) + ' 天前';
+  return d.toLocaleString('zh-CN', { hour12: false });
 }
 
 function onNoteChange(key, el) {
@@ -5279,6 +5314,15 @@ function onNoteChange(key, el) {
   const field = el.dataset.field;
   notes[key][field] = el.value;
   notes[key]._updated = new Date().toISOString();
+  // 自动记录作者 (用当前 input 的作者)
+  if (field !== 'by') {
+    const authorInp = document.querySelector('[data-key="' + key + '"] [data-field="by"]');
+    if (authorInp && authorInp.value) {
+      notes[key].by = authorInp.value;
+    } else {
+      notes[key]._by = getAuthor();
+    }
+  }
   saveNotes(notes);
 
   // 更新状态徽章
@@ -5303,15 +5347,20 @@ function onNoteChange(key, el) {
     }
   }
 
-  // 更新最后更新时间
+  // 更新最后更新时间 + 作者
   const updatedEl = document.querySelector('[data-updated="' + key + '"]');
-  if (updatedEl && notes[key]._updated) {
-    const d = new Date(notes[key]._updated);
-    updatedEl.textContent = d.toLocaleString('zh-CN', { hour12: false });
+  if (updatedEl) {
+    const author = notes[key].by || notes[key]._by || '';
+    const time = formatTimeAgo(notes[key]._updated);
+    let text = '';
+    if (author && time) text = `by ${author} · ${time}`;
+    else if (author) text = `by ${author}`;
+    else if (time) text = time;
+    updatedEl.textContent = text;
   }
 
   // 重新应用 filter (跟进状态变化时)
-  if (field === 'followup') {
+  if (field === 'followup' || field === 'by') {
     applyFilters();
   }
 }
@@ -5332,12 +5381,17 @@ function restoreNotes() {
       const evt = new Event('change');
       statusEl.dispatchEvent(evt);
     }
-    // 显示更新时间
+    // 显示更新时间 + 作者
     if (data._updated) {
       const updatedEl = card.querySelector('[data-updated="' + key + '"]');
       if (updatedEl) {
-        const d = new Date(data._updated);
-        updatedEl.textContent = d.toLocaleString('zh-CN', { hour12: false });
+        const author = data.by || data._by || '';
+        const time = formatTimeAgo(data._updated);
+        let text = '';
+        if (author && time) text = `by ${author} · ${time}`;
+        else if (author) text = `by ${author}`;
+        else if (time) text = time;
+        updatedEl.textContent = text;
       }
     }
   }
@@ -5532,9 +5586,11 @@ function submitNewCompany(e) {
           <option value="vip">⭐ 重点客户</option><option value="paused">📪 暂不跟进</option>
         </select></div>
       <div class="call-log-row row-stacked"><label>约见</label>
-        <input type="text" data-field="appointment" placeholder="例: 2026-11-15 14:00" oninput="onNoteChange('${key}', this)"></div>
-      <div class="call-log-row row-stacked"><label>备注</label>
-        <textarea data-field="note" placeholder="电话沟通要点..." oninput="onNoteChange('${key}', this)"></textarea></div>
+        <input type="text" data-field="meeting" placeholder="例:周三 14:00 / 11月15日" oninput="onNoteChange('${key}', this)"></div>
+      <div class="call-log-row row-stacked"><label>备注 (写详细)</label>
+        <textarea data-field="note" rows="4" placeholder="如:老板娘说11月开店..." oninput="onNoteChange('${key}', this)"></textarea></div>
+      <div class="call-log-row"><label>更新人</label>
+        <input type="text" class="short" data-field="by" placeholder="你的名字" oninput="onNoteChange('${key}', this)"></div>
     </div>
     ${data.note ? `<div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ${data.note}</div>` : ''}
   `;
@@ -5555,7 +5611,7 @@ function submitNewCompany(e) {
     _extra: true,
     _sheet: data.sheet,
     _sub_type: sub,
-    status: '', im: '', followup: '', appointment: '', note: data.note || '',
+    status: '', im: '', followup: '', meeting: '', note: data.note || '', by: '',
     _updated: new Date().toISOString()
   };
   saveNotes(notes);
@@ -5592,10 +5648,28 @@ function importJSON() {
       try {
         const imported = JSON.parse(evt.target.result);
         const existing = loadNotes();
-        const merged = { ...existing, ...imported };
+        // 智能合并: 同 key 不覆盖 (保留本地更新, 用更新的 _updated 决定)
+        let newCount = 0, updatedCount = 0, unchangedCount = 0;
+        const merged = { ...existing };
+        for (const [k, v] of Object.entries(imported)) {
+          if (!merged[k]) {
+            merged[k] = v;
+            newCount++;
+          } else {
+            // 比较 _updated, 选新的
+            const oldTs = merged[k]._updated || '';
+            const newTs = v._updated || '';
+            if (newTs > oldTs) {
+              merged[k] = { ...merged[k], ...v };
+              updatedCount++;
+            } else {
+              unchangedCount++;
+            }
+          }
+        }
         saveNotes(merged);
         restoreNotes();
-        showToast('📥 已导入 ' + Object.keys(imported).length + ' 条备注');
+        showToast(`📥 合并完成: 新增 ${newCount} 条 + 更新 ${updatedCount} 条 (总计 ${Object.keys(merged).length} 条)`);
       } catch(e) {
         showToast('❌ JSON 解析失败: ' + e.message);
       }
@@ -5610,7 +5684,7 @@ function copyShareLink() {
   const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(notes))));
   const url = location.origin + location.pathname + '#notes=' + encoded;
   copyText(url, '分享链接');
-  showToast('🔗 已复制分享链接 (粘贴给同事, 他们打开会看到你的备注)');
+  showToast('🔗 已复制分享链接 (粘贴给同事, 他们打开会自动合并你的备注)');
 }
 
 function clearAllNotes() {
@@ -5623,19 +5697,42 @@ function clearAllNotes() {
 // 初始化
 // ============================================================
 window.addEventListener('DOMContentLoaded', () => {
+  // 恢复作者名 (从 localStorage)
+  const savedAuthor = localStorage.getItem('thailand_author');
+  if (savedAuthor) {
+    const inp = document.getElementById('authorInput');
+    if (inp) inp.value = savedAuthor;
+  }
+
   // 从 URL hash 恢复备注
   if (location.hash.startsWith('#notes=')) {
     try {
       const encoded = location.hash.slice(7);
       const notes = JSON.parse(decodeURIComponent(escape(atob(encoded))));
       const existing = loadNotes();
-      const merged = { ...existing, ...notes };
+      // 智能合并 (同 importJSON 逻辑)
+      let newCount = 0, updatedCount = 0;
+      const merged = { ...existing };
+      for (const [k, v] of Object.entries(notes)) {
+        if (!merged[k]) {
+          merged[k] = v;
+          newCount++;
+        } else {
+          const oldTs = merged[k]._updated || '';
+          const newTs = v._updated || '';
+          if (newTs > oldTs) {
+            merged[k] = { ...merged[k], ...v };
+            updatedCount++;
+          }
+        }
+      }
       saveNotes(merged);
       history.replaceState(null, '', location.pathname);
-      showToast('🔗 已从分享链接恢复 ' + Object.keys(notes).length + ' 条备注');
+      showToast(`🔗 已从分享链接合并: 新增 ${newCount} 条 + 更新 ${updatedCount} 条`);
     } catch(e) { console.warn('share link parse failed', e); }
   }
   restoreNotes();
+  updateNoteCount();
 });
 </script>
 </body>
