@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>泰国餐饮市场 — 电话/距离/拨号版</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { overflow-x: hidden; max-width: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    margin: 0; padding: 0; background: #f0f2f5; color: #333; font-size: 15px; line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+  }
+  .header {
+    background: linear-gradient(135deg, #1F3864 0%, #2E5A9E 100%);
+    color: white; padding: 14px 14px 12px; position: sticky; top: 0; z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .header h1 { font-size: 17px; margin: 0 0 2px; font-weight: 600; }
+  .header .sub { font-size: 11px; opacity: 0.85; }
+  .stats {
+    background: white; margin: 10px; border-radius: 8px; padding: 10px 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .stat-item { flex: 1 1 30%; font-size: 11px; }
+  .stat-num { font-size: 18px; font-weight: 700; color: #1F3864; display: block; }
+  .stat-lbl { color: #666; }
+  .toc {
+    background: white; margin: 0 10px 10px; border-radius: 8px; padding: 6px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .toc a {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 12px; color: #1F3864; text-decoration: none;
+    border-bottom: 1px solid #f0f0f0; font-size: 14px;
+  }
+  .toc a:last-child { border-bottom: none; }
+  .toc a:active { background: #f0f4fa; }
+  .toc .count { color: #999; font-size: 12px; }
+  .section { margin: 10px; }
+  .section-title {
+    padding: 10px 14px; font-size: 15px; font-weight: 600; color: white;
+    border-radius: 8px 8px 0 0;
+  }
+  .section-body {
+    background: white; border-radius: 0 0 8px 8px; padding: 6px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card {
+    padding: 10px 12px; border-bottom: 1px solid #f0f0f0;
+  }
+  .card:last-child { border-bottom: none; }
+  .card-head {
+    display: flex; align-items: center; gap: 6px; margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    display: inline-block; font-size: 11px; padding: 3px 7px; border-radius: 4px;
+    background: #E7E6E6; color: #333; white-space: nowrap;
+  }
+  .source-tag {
+    display: inline-block; font-size: 10px; padding: 2px 5px; border-radius: 3px;
+    background: #DDEBF7; color: #1F3864; font-weight: 500;
+  }
+  .dist-tag {
+    display: inline-block; font-size: 10px; padding: 2px 6px; border-radius: 3px;
+    background: #FFF9E6; color: #5F4E1D; font-weight: 600;
+    border: 1px solid #BF8F00;
+  }
+  .name { font-size: 16px; font-weight: 700; color: #1F3864; margin: 2px 0 1px; line-height: 1.3; }
+  .name-en { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .phone-block { margin: 4px 0; }
+  .phone-link {
+    display: block; padding: 10px 12px; margin: 4px 0; background: #E2EFDA;
+    color: #375623; text-decoration: none; border-radius: 6px; font-size: 15px;
+    font-weight: 600; word-break: break-all;
+  }
+  .phone-link:active { background: #C6E0B4; }
+  .phone-link .lbl { font-size: 11px; font-weight: 400; color: #6B7B5C; display: block; }
+  .addr-block {
+    margin-top: 8px; padding: 10px; background: #f8f9fa; border-radius: 6px;
+  }
+  .addr-text {
+    display: block; color: #333; font-size: 13px; line-height: 1.5; margin-bottom: 8px;
+    word-break: break-word;
+  }
+  .addr-text .pin { color: #C00000; margin-right: 4px; }
+  .addr-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 7px 12px; border-radius: 6px; font-size: 12px;
+    text-decoration: none; font-weight: 600; border: none; cursor: pointer;
+  }
+  .btn-maps { background: #1F3864; color: white; }
+  .btn-maps:active { background: #2E5A9E; }
+  .btn-copy { background: #FFF9E6; color: #5F4E1D; border: 1px solid #BF8F00; }
+  .btn-copy:active { background: #FFE699; }
+  .btn-name { background: #E2EFDA; color: #375623; border: 1px solid #548235; }
+  .btn-name:active { background: #C6E0B4; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🇹🇭 泰国餐饮市场 — 电话/距离/拨号版</h1>
+  <div class="sub">v1 · 2026-10-09 · 6 sheet · 73 条数据 · 曼谷聚焦</div>
+</div>
+
+<div class="stats">
+  <div class="stat-item"><span class="stat-num">6</span><span class="stat-lbl">Sheet</span></div>
+  <div class="stat-item"><span class="stat-num">83</span><span class="stat-lbl">条数据</span></div>
+  <div class="stat-item"><span class="stat-num">曼谷</span><span class="stat-lbl">聚焦城市</span></div>
+  <div class="stat-item"><span class="stat-num">Yaowarat</span><span class="stat-lbl">唐人街核心</span></div>
+  <div class="stat-item"><span class="stat-num">2026-10</span><span class="stat-lbl">更新时间</span></div>
+</div>
+
+<div class="toc"><a href="#sheet1"><span>1. Sheet 1 城市 GDP</span><span class="count">→</span></a>
+<a href="#sheet2"><span>2. Sheet 2 经销商</span><span class="count">→</span></a>
+<a href="#sheet3"><span>3. Sheet 3 连锁品牌</span><span class="count">→</span></a>
+<a href="#sheet4"><span>4. Sheet 4 中餐厅</span><span class="count">→</span></a>
+<a href="#sheet5"><span>5. Sheet 5 中国超市</span><span class="count">→</span></a>
+<a href="#sheet6"><span>6. Sheet 6 国际酒店</span><span class="count">→</span></a></div>
+
+<section id="sheet1" class="section">
+  <div class="section-title" style="background:#1F3864;">1. 泰国主要城市 GDP 与餐饮市场数据 (10 条)</div>
+  <div class="section-body"><div class="card">
+      <div class="card-head"><span class="badge">• 首都直辖市 (中部)</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">曼谷</div>
+      <div class="name-en">Bangkok (Krung Thep Maha Nakhon)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Bangkok (Krung Thep Maha Nakhon), Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('曼谷', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Bangkok%20%28Krung%20Thep%20Maha%20Nakhon%29%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Bangkok (Krung Thep Maha Nakhon), Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 1700 亿美元 (33.0%) · 人口 10,539,000</div>
+        <div style="margin-top:4px;">≈ ≈ 中国上海 (一线) · 中餐厅 800 · 日料 300 · 韩料 200 · 连锁总数 6000 · 代表品牌 KFC, Pizza Hut, Jollibee, McDonald's, Café Amazon, MK Restaurants, Starbucks, Greyhound</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 100-2000 THB (≈ 21-420 CNY)</div>
+      </div>
+      
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 东部经济走廊 EEC</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">春武里</div>
+      <div class="name-en">Chon Buri</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Chon Buri, Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('春武里', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chon%20Buri%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Chon Buri, Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 400 亿美元 (7.8%) · 人口 1,562,000</div>
+        <div style="margin-top:4px;">≈ ≈ 中国苏州 (工业) · 中餐厅 60 · 日料 20 · 韩料 15 · 连锁总数 800 · 代表品牌 KFC, MK Restaurants, Café Amazon, Swensen's, Yayoi</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 100-800 THB (≈ 21-168 CNY)</div>
+      </div>
+      
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 南部府 (旅游岛)</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">普吉</div>
+      <div class="name-en">Phuket</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Phuket, Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('普吉', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Phuket%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Phuket, Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 220 亿美元 (4.3%) · 人口 416,582</div>
+        <div style="margin-top:4px;">≈ ≈ 中国厦门 (旅游) · 中餐厅 80 · 日料 30 · 韩料 20 · 连锁总数 400 · 代表品牌 KFC, MK Restaurants, Café Amazon, Starbucks, The Coffee Club</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 150-1500 THB (≈ 32-315 CNY)</div>
+      </div>
+      
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 北部中心</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">清迈</div>
+      <div class="name-en">Chiang Mai</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Chiang Mai, Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('清迈', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chiang%20Mai%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Chiang Mai, Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 200 亿美元 (3.9%) · 人口 1,279,561</div>
+        <div style="margin-top:4px;">≈ ≈ 中国昆明 (区域中心) · 中餐厅 100 · 日料 25 · 韩料 15 · 连锁总数 600 · 代表品牌 KFC, MK Restaurants, Café Amazon, Starbucks, Ristr8to, Wawee Coffee</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 80-800 THB (≈ 17-168 CNY)</div>
+      </div>
+      
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 大曼谷都市圈</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">暖武里</div>
+      <div class="name-en">Nonthaburi</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Nonthaburi, Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('暖武里', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Nonthaburi%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Nonthaburi, Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 190 亿美元 (3.7%) · 人口 1,550,140</div>
+        <div style="margin-top:4px;">≈ ≈ 中国东莞 (工业) · 中餐厅 30 · 日料 10 · 韩料 8 · 连锁总数 400 · 代表品牌 KFC, MK Restaurants, Café Amazon, McDonald's</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 100-600 THB (≈ 21-126 CNY)</div>
+      </div>
+      
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 大曼谷都市圈 (东部)</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">北榄</div>
+      <div class="name-en">Samut Prakan</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Samut Prakan, Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('北榄', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Samut%20Prakan%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Samut Prakan, Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 180 亿美元 (3.5%) · 人口 1,341,500</div>
+        <div style="margin-top:4px;">≈ ≈ 中国佛山 (工业) · 中餐厅 25 · 日料 8 · 韩料 6 · 连锁总数 350 · 代表品牌 KFC, MK Restaurants, Café Amazon</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 100-500 THB (≈ 21-105 CNY)</div>
+      </div>
+      
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 东部经济走廊 EEC</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">罗勇</div>
+      <div class="name-en">Rayong</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Rayong, Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('罗勇', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Rayong%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Rayong, Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 150 亿美元 (2.9%) · 人口 723,316</div>
+        <div style="margin-top:4px;">≈ ≈ 中国宁波 (港口) · 中餐厅 15 · 日料 5 · 韩料 3 · 连锁总数 250 · 代表品牌 KFC, MK Restaurants, Café Amazon</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 100-400 THB (≈ 21-84 CNY)</div>
+      </div>
+      
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 南部中心</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">宋卡 (合艾)</div>
+      <div class="name-en">Songkhla (Hat Yai)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Songkhla (Hat Yai), Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('宋卡 (合艾)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Songkhla%20%28Hat%20Yai%29%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Songkhla (Hat Yai), Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 110 亿美元 (2.1%) · 人口 1,407,660</div>
+        <div style="margin-top:4px;">≈ ≈ 中国海口 (区域) · 中餐厅 40 · 日料 8 · 韩料 5 · 连锁总数 200 · 代表品牌 KFC, MK Restaurants, Café Amazon, Starbucks</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 80-500 THB (≈ 17-105 CNY)</div>
+      </div>
+      
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 北部边境</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">清莱</div>
+      <div class="name-en">Chiang Rai</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Chiang Rai, Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('清莱', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chiang%20Rai%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Chiang Rai, Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 70 亿美元 (1.4%) · 人口 1,286,998</div>
+        <div style="margin-top:4px;">≈ ≈ 中国遵义 (区域) · 中餐厅 25 · 日料 5 · 韩料 3 · 连锁总数 150 · 代表品牌 KFC, Café Amazon</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 60-300 THB (≈ 13-63 CNY)</div>
+      </div>
+      
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 东北部 Isaan 中心</span><span class="source-tag">Sheet 1 城市</span></div>
+      <div class="name">呵叻</div>
+      <div class="name-en">Nakhon Ratchasima (Korat)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Nakhon Ratchasima (Korat), Thailand</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('呵叻', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Nakhon%20Ratchasima%20%28Korat%29%20Thailand" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Nakhon Ratchasima (Korat), Thailand`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>GDP 90 亿美元 (1.8%) · 人口 2,636,017</div>
+        <div style="margin-top:4px;">≈ ≈ 中国桂林 (区域) · 中餐厅 20 · 日料 5 · 韩料 3 · 连锁总数 180 · 代表品牌 KFC, MK Restaurants, Café Amazon, Swensen's</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 60-400 THB (≈ 13-84 CNY)</div>
+      </div>
+      
+    </div></div>
+</section>
+<section id="sheet2" class="section">
+  <div class="section-title" style="background:#2E5A9E;">2. 泰国餐饮类经销商联系信息 (9 条)</div>
+  <div class="section-body"><div class="card">
+      <div class="card-head"><span class="badge">• 调味品 (泰国本土最大)</span><span class="source-tag">Sheet 2 经销商</span></div>
+      <div class="name">Healthy Boy Sauce (健康男孩酱料)</div>
+      <div class="name-en">Healthy Boy Sauce Co., Ltd. / Yan Wal Yun Co., Ltd.</div>
+      <div class="phone-block"><a href="tel:+66267479909" class="phone-link">📞 0-2674-7990-9<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>767 Soi Wat Phai Ngoen, Thung Wat Don, Sathorn, Bangkok 10120 (Samut Sakorn 工厂 70+ rai / 45 万瓶/天, Rayong 工厂 16,000 瓶/天)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+66267479909', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Healthy Boy Sauce (健康男孩酱料)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Healthy%20Boy%20Sauce%20Co.%2C%20Ltd.%20/%20Yan%20Wal%20Yun%20Co.%2C%20Ltd.%20767%20Soi%20Wat%20Phai%20Ngoen%2C%20Thung%20Wat%20Don%2C%20Sathorn%2C%20Bangkok%2010120%20%28Samut%20Sakorn%20%E5%B7%A5%E5%8E%82%2070%2B%20rai%20/%2045%20%E4%B8%87%E7%93%B6/%E5%A4%A9%2C%20Rayong%20%E5%B7%A5%E5%8E%82%2016%2C000%20%E7%93%B6/%E5%A4%A9%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`767 Soi Wat Phai Ngoen, Thung Wat Don, Sathorn, Bangkok 10120 (Samut Sakorn 工厂 70+ rai / 45 万瓶/天, Rayong 工厂 16,000 瓶/天)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.healthyboythailand.com" target="_blank" class="btn btn-name">🌐 官网</a><a href="mailto:Mantana.suk@deksomboon.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🚚 曼谷 · Sathorn</div>
+        <div style="margin-top:4px;">Healthy Boy 牌 Oyster Sauce 蚝油 + Mushroom Sauce 香菇酱 + Soy Sauce 酱油 + Dipping Sauces 蘸酱 (覆盖 60+ 国家) | 曼谷 Sathorn Soi Wat Phai Ngoen 767 Soi Wat Phai Ngoen, Thung Wat Don, Sathorn, Bangkok 10120 (Samut Sakorn 工厂 70+ rai / 45 万瓶/天, Rayong 工厂 16,000 瓶/天) | 创办 1947 | 可信度 ★★★★★ | Mantana.suk@deksomboon.com</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 1947 · 可信度 ★★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰国本土最大调味品品牌 — 蚝油 (Oyster Sauce) 全球前 3 — Halal 认证 — 嘉豪重点对接：蚝油+酱油竞品调研+渠道参考</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• HORECA 综合 + 进口 (高端)</span><span class="source-tag">Sheet 2 经销商</span></div>
+      <div class="name">Silom Food Services</div>
+      <div class="name-en">Silom Food Services Co., Ltd. / Silom Commodities Co., Ltd.</div>
+      <div class="phone-block"><a href="tel:+66614162212" class="phone-link">📞 061-416-2212<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>981/130 Villaggio 3 Srinakarin Village, Bang Kaeo, Bang Phli, Samut Prakan 10540</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+66614162212', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Silom Food Services', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Silom%20Food%20Services%20Co.%2C%20Ltd.%20/%20Silom%20Commodities%20Co.%2C%20Ltd.%20981/130%20Villaggio%203%20Srinakarin%20Village%2C%20Bang%20Kaeo%2C%20Bang%20Phli%2C%20Samut%20Prakan%2010540" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`981/130 Villaggio 3 Srinakarin Village, Bang Kaeo, Bang Phli, Samut Prakan 10540`, this); return false;">📋 复制地址</button>
+          <a href="https://silomfood.com" target="_blank" class="btn btn-name">🌐 官网</a><a href="mailto:issara@silomfood.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🚚 曼谷 · Bang Phli</div>
+        <div style="margin-top:4px;">高端进口食材 (欧洲+加拿大+东南亚+日本+韩国)：Foie Gras 鹅肝 / Salmon Roe 鱼籽 / Sashimi 刺身 / Tuna Saku 金枪鱼 / Boiled Octopus 煮章鱼 | 曼谷 Bang Phli Srinakarin Village 981/130 Villaggio 3 Srinakarin Village, Bang Kaeo, Bang Phli, Samut Prakan 10540 | 创办 2017 | 可信度 ★★★★ | issara@silomfood.com</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2017 · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 2017 创立高端进口食材分销 — 河内+布达佩斯+温哥华全球采购 — 嘉豪重点对接：高端酱料+食材直供五星级酒店</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• HORECA 综合 (批发)</span><span class="source-tag">Sheet 2 经销商</span></div>
+      <div class="name">Siam Makro (万客隆)</div>
+      <div class="name-en">Siam Makro Public Company Limited</div>
+      <div class="phone-block"><a href="tel:+6620679300" class="phone-link">📞 02-067-9300 (总部) / +66 2 676 0676 (Sathorn) / 02 056 2110 (Bueng Kum)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>总部 1468 Phattanakarn Road, Suan Luang, Bangkok 10250; Makro Sathorn 178 Naradhiwas Rajanagarindra Rd, Sathorn, Bangkok 10120; Makro Food Service 1106 Nawamin Rd, Bueng Kum, Bangkok 10230</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6620679300', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Siam Makro (万客隆)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Siam%20Makro%20Public%20Company%20Limited%20%E6%80%BB%E9%83%A8%201468%20Phattanakarn%20Road%2C%20Suan%20Luang%2C%20Bangkok%2010250%3B%20Makro%20Sathorn%20178%20Naradhiwas%20Rajanagarindra%20Rd%2C%20Sathorn%2C%20Bangkok%2010120%3B%20Makro%20Food%20Service%201106%20Nawamin%20Rd%2C%20Bueng%20Kum%2C%20Bangkok%2010230" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`总部 1468 Phattanakarn Road, Suan Luang, Bangkok 10250; Makro Sathorn 178 Naradhiwas Rajanagarindra Rd, Sathorn, Bangkok 10120; Makro Food Service 1106 Nawamin Rd, Bueng Kum, Bangkok 10230`, this); return false;">📋 复制地址</button>
+          <a href="https://www.siammakro.co.th" target="_blank" class="btn btn-name">🌐 官网</a><a href="mailto:cgoffice@siammakro.co.th / kjerarau@siammakro.co.th" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🚚 曼谷 · Suan Luang / Sathorn / Bueng Kum</div>
+        <div style="margin-top:4px;">综合批发 (食品+非食品)：Fresh Produce 海鲜+肉 / Dairy 乳制品 / Imported Goods 进口 / Frozen Foods 冷冻品 — 130 店全国 — Cash & Carry 模式 | 曼谷 Suan Luang / Sathorn / Bueng Kum Phattanakarn Rd / Naradhiwas Rajanagarindra / Nawamin 总部 1468 Phattanakarn Road, Suan Luang, Bangkok 10250; Makro Sathorn 178 Naradhiwas Rajanagarindr</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 1988 · 可信度 ★★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰国最大批发 (HORECA+零售) — 130 店全国网络 — 嘉豪重点对接：酱料铺全国 9 家大曼谷 Makro 店 (批发渠道黄金)</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 调味品+方便食品 (Mama 牌方便面 + 调味品)</span><span class="source-tag">Sheet 2 经销商</span></div>
+      <div class="name">Thai President Foods (泰统一)</div>
+      <div class="name-en">Thai President Foods Public Company Limited (MAMA)</div>
+      <div class="phone-block"><a href="tel:+6620237447301125" class="phone-link">📞 (662) 0-2374 4730 ext 1125 / 02-374-4730<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>304 TF Bldg., Srinakarin Rd., Huamark, Bangkapi, Bangkok 10240</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6620237447301125', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Thai President Foods (泰统一)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Thai%20President%20Foods%20Public%20Company%20Limited%20%28MAMA%29%20304%20TF%20Bldg.%2C%20Srinakarin%20Rd.%2C%20Huamark%2C%20Bangkapi%2C%20Bangkok%2010240" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`304 TF Bldg., Srinakarin Rd., Huamark, Bangkapi, Bangkok 10240`, this); return false;">📋 复制地址</button>
+          <a href="https://www.mama.co.th" target="_blank" class="btn btn-name">🌐 官网</a><a href="mailto:wasan.b@mama.co.th / tf@mama.co.th" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🚚 曼谷 · Bangkapi</div>
+        <div style="margin-top:4px;">Mama Brand Instant Noodles 全球方便面前 5 + 调味品 — 工厂 Sri Racha / Lumphun / Rayong / Ratchaburi — 2024 年获 Chulalongkorn "Most Powerful Brand" 即食面类冠军 | 曼谷 Bangkapi Srinakarin Rd Huamark 304 TF Bldg., Srinakarin Rd., Huamark, Bangkapi, Bangkok 10240 | 创办 1972 | 可信度 ★★★★ | wasan.b@mama.co.th / tf@mama.co.th</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 1972 · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Mama 全球方便面前 5 — 嘉豪参考：调味品+酱料在泰市场容量调研 — 食品厂直采渠道</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 调味品 (日本+泰国合资冷冻)</span><span class="source-tag">Sheet 2 经销商</span></div>
+      <div class="name">Ajinomoto Betagro Frozen Foods (味之素-正大合资)</div>
+      <div class="name-en">Ajinomoto Betagro Frozen Foods (Thailand) Co., Ltd.</div>
+      <div class="phone-block"><a href="tel:+66367712816" class="phone-link">📞 036-771-281-6 #344 / +66-8-990-2433<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>323 Moo 6, Thung Song Hong, Lak Si, Bangkok 10210 (Betagro Tower North Park 4F 国际业务办公室)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+66367712816', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Ajinomoto Betagro Frozen Foods (味之素-正大合资)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ajinomoto%20Betagro%20Frozen%20Foods%20%28Thailand%29%20Co.%2C%20Ltd.%20323%20Moo%206%2C%20Thung%20Song%20Hong%2C%20Lak%20Si%2C%20Bangkok%2010210%20%28Betagro%20Tower%20North%20Park%204F%20%E5%9B%BD%E9%99%85%E4%B8%9A%E5%8A%A1%E5%8A%9E%E5%85%AC%E5%AE%A4%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`323 Moo 6, Thung Song Hong, Lak Si, Bangkok 10210 (Betagro Tower North Park 4F 国际业务办公室)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.ajinomotobetagro.com" target="_blank" class="btn btn-name">🌐 官网</a><a href="mailto:papathsichara@betagro.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🚚 曼谷 · Lak Si</div>
+        <div style="margin-top:4px;">Ajinomoto 味之素 调味品 + Betagro 肉类加工 — 泰国冷冻食品前 3 — 重点供应 HORECA 渠道 | 曼谷 Lak Si Vibhavadi Rangsit Rd 323 Moo 6, Thung Song Hong, Lak Si, Bangkok 10210 (Betagro Tower North Park 4F 国际业务办公室) | 创办 1989 | 可信度 ★★★★ | papathsichara@betagro.com</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 1989 · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Ajinomoto+Betagro 合资 — 冷冻+调味品组合 — 嘉豪对接：Betagro 国际业务部 Kitipan Boonnaiva / Tharinee Prasertpakdi (VP) / Oliver Gottschall (CCO)</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• HORECA 经销商 (2014 创立)</span><span class="source-tag">Sheet 2 经销商</span></div>
+      <div class="name">Royal Food and Marketing</div>
+      <div class="name-en">Royal Food and Marketing Co., Ltd.</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>曼谷 Bang Khen 【待 Thomas 实地核实】</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待查】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Royal Food and Marketing', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Royal%20Food%20and%20Marketing%20Co.%2C%20Ltd.%20%E6%9B%BC%E8%B0%B7%20Bang%20Khen" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`曼谷 Bang Khen 【待 Thomas 实地核实】`, this); return false;">📋 复制地址</button>
+          <a href="https://royalfoodnmarketing.online" target="_blank" class="btn btn-name">🌐 官网</a><a href="mailto:info@royalfoodnmarketing.online" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🚚 曼谷 · Bang Khen</div>
+        <div style="margin-top:4px;">Thai Food Service 行业 — HORECA 客户群 — 可靠食品分销商 | 曼谷 Bang Khen 【待 Thomas 实地核实】 Bangkok (总部具体地址【待 Thomas 实地核实】) | 创办 2014 | 可信度 ★★★ | info@royalfoodnmarketing.online</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2014 · 可信度 ★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 2014 创立中型 HORECA 经销商 — 灵活服务 — 嘉豪参考：本地中型经销商接触样本 — 待 Thomas 实地走访 Bang Khen 区域</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• HORECA 综合 (高端进口)</span><span class="source-tag">Sheet 2 经销商</span></div>
+      <div class="name">3sixty Food</div>
+      <div class="name-en">3sixty Food Co., Ltd.</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>曼谷 【待 Thomas 实地核实】 【待 Thomas 实地核实】</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待查】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('3sixty Food', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=3sixty%20Food%20Co.%2C%20Ltd.%20%E6%9B%BC%E8%B0%B7%20%E3%80%90%E5%BE%85%20Thomas%20%E5%AE%9E%E5%9C%B0%E6%A0%B8%E5%AE%9E%E3%80%91" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`曼谷 【待 Thomas 实地核实】 【待 Thomas 实地核实】`, this); return false;">📋 复制地址</button>
+          <a href="https://www.3sixtyfood.com" target="_blank" class="btn btn-name">🌐 官网</a><a href="mailto:info@3sixtyfood.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🚚 曼谷 · 【待 Thomas 实地核实】</div>
+        <div style="margin-top:4px;">高端进口零食+饮料+谷物+糖果 — 酒店/餐厅/咖啡店渠道 — Premium 定位 | 曼谷 【待 Thomas 实地核实】 【待 Thomas 实地核实】 Bangkok (总部具体地址【待 Thomas 实地核实】) | info@3sixtyfood.com</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 【待查】 · 可信度 ★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 高端进口零食+饮料分销 — 嘉豪参考：高端进口食品渠道 — 待 Thomas 实地核实总部地址</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• HORECA 综合 (大型多元化)</span><span class="source-tag">Sheet 2 经销商</span></div>
+      <div class="name">Berli Jucker (BJC)</div>
+      <div class="name-en">Berli Jucker Public Company Limited</div>
+      <div class="phone-block"><a href="tel:+6623671111" class="phone-link">📞 (662) 367-1111<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Bangkok (总部 99 Soi Rubia, Sukhumvit 42, Phra Khanong, Klong Toei, Bangkok 10110 — 待 Thomas 实地核实)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6623671111', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Berli Jucker (BJC)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Berli%20Jucker%20Public%20Company%20Limited%20Bangkok%20%28%E6%80%BB%E9%83%A8%2099%20Soi%20Rubia%2C%20Sukhumvit%2042%2C%20Phra%20Khanong%2C%20Klong%20Toei%2C%20Bangkok%2010110%20%E2%80%94%20%E5%BE%85%20Thomas%20%E5%AE%9E%E5%9C%B0%E6%A0%B8%E5%AE%9E%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Bangkok (总部 99 Soi Rubia, Sukhumvit 42, Phra Khanong, Klong Toei, Bangkok 10110 — 待 Thomas 实地核实)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.bjc.co.th" target="_blank" class="btn btn-name">🌐 官网</a><a href="mailto:info@bjc.co.th" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🚚 曼谷 · Klong Toei / Hua Lamphong</div>
+        <div style="margin-top:4px;">综合分销 (食品+非食品+物流) — 与 Central Group 关联 — BJC 是泰国 SET 50 公司 — 覆盖酒店/餐饮/零售 | 曼谷 Klong Toei / Hua Lamphong 【待 Thomas 实地核实总部】 Bangkok (总部 99 Soi Rubia, Sukhumvit 42, Phra Khanong, Klong Toei, Bangkok 10110 — 待 Thomas 实地核实) | 创办 1882 | 可信度 ★★★★ | info@bjc.co.th</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 1882 · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰国百年分销集团 — BJC + Central Group 系 — 嘉豪对接：与 Central Food Retail 同集团，可走 Tops 超市渠道</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• HORECA 综合 + 高端超市</span><span class="source-tag">Sheet 2 经销商</span></div>
+      <div class="name">Central Food Retail (Tops)</div>
+      <div class="name-en">Central Food Retail Group (Tops / Central Food Hall)</div>
+      <div class="phone-block"><a href="tel:+6627937777CnralWorld" class="phone-link">📞 (662) 793-7777 (Central World)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Central World Ratchadamri, Pathum Wan, Bangkok 10330 (旗舰店); Central Plaza Lat Phrao, Bang Kapi, Bangkok 1270</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6627937777CnralWorld', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Central Food Retail (Tops)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Central%20Food%20Retail%20Group%20%28Tops%20/%20Central%20Food%20Hall%29%20Central%20World%20Ratchadamri%2C%20Pathum%20Wan%2C%20Bangkok%2010330%20%28%E6%97%97%E8%88%B0%E5%BA%97%29%3B%20Central%20Plaza%20Lat%20Phrao%2C%20Bang%20Kapi%2C%20Bangkok%201270" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Central World Ratchadamri, Pathum Wan, Bangkok 10330 (旗舰店); Central Plaza Lat Phrao, Bang Kapi, Bangkok 1270`, this); return false;">📋 复制地址</button>
+          <a href="https://www.centralfoodretail.com" target="_blank" class="btn btn-name">🌐 官网</a><a href="mailto:info@centralfoodretail.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🚚 曼谷 · Bang Kapi / Pathum Wan</div>
+        <div style="margin-top:4px;">Tops / Central Food Hall 高端超市 + HORECA 集采 — 泰国零售前 3 — 隶属 Central Group | 曼谷 Bang Kapi / Pathum Wan Lat Phrao / Ratchadamri Central World Ratchadamri, Pathum Wan, Bangkok 10330 (旗舰店); Central Plaza Lat Phrao, Bang Kapi, Bangkok 1270 | 创办 1996 | 可信度 ★★★★ | info@centralfoodretail.com</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 1996 · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Tops / Central Food Hall 高端超市 — 嘉豪对接：与 BJC 同集团 — 高端酱料 SKU 进店渠道</div>
+    </div></div>
+</section>
+<section id="sheet3" class="section">
+  <div class="section-title" style="background:#548235;">3. 泰国主要连锁餐厅品牌 (18 条)</div>
+  <div class="section-body"><div class="card">
+      <div class="card-head"><span class="badge">• 咖啡连锁 (最大)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Café Amazon (亚马逊咖啡)</div>
+      <div class="name-en">Café Amazon</div>
+      <div class="phone-block"><a href="tel:+6625372000" class="phone-link">📞 +66 2 537 2000 (PTT 总部) / 02-162-8888 (Café Amazon)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>PTT Public Company Limited — 555/1 Vibhavadi Rangsit Road, Chatuchak, Bangkok 10900 (Café Amazon 总部)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6625372000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Café Amazon (亚马逊咖啡)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20Amazon%20PTT%20Public%20Company%20Limited%20%E2%80%94%20555/1%20Vibhavadi%20Rangsit%20Road%2C%20Chatuchak%2C%20Bangkok%2010900%20%28Caf%C3%A9%20Amazon%20%E6%80%BB%E9%83%A8%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`PTT Public Company Limited — 555/1 Vibhavadi Rangsit Road, Chatuchak, Bangkok 10900 (Café Amazon 总部)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.cafeamazon.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 4749 (泰国 4339 + 海外 310) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国最大咖啡连锁 (4749 店) — 2024 卖 2.99 亿杯 — 同比增长 8% — 计划 2025 年再开 300 店 — 计划 2024 Q4 进入孟加拉 | 来源 ThailandTV News 2024 + PTT OR 2024 Q3 报告</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">PTT Oil and Retail Business (PTT OR) — 泰国能源巨头 PTT 集团 · 加盟: PTT OR 直营 — 54% 在 PTT 加油站</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰国最大咖啡 — 嘉豪对接：酱料+炒菜机器人进 PTT OR 加油站便利店渠道</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 西式快餐 (炸鸡)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">KFC Thailand (肯德基)</div>
+      <div class="name-en">KFC Thailand</div>
+      <div class="phone-block"><a href="tel:+6622610300" class="phone-link">📞 +66 2 261 0300 (Yum Thailand)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yum! Brands Thailand 总部 — 689 Bhiraj Tower at EmQuartier, 689 Sukhumvit Road, Phra Khanong, Khlong Toei, Bangkok 10110</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6622610300', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('KFC Thailand (肯德基)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=KFC%20Thailand%20Yum%21%20Brands%20Thailand%20%E6%80%BB%E9%83%A8%20%E2%80%94%20689%20Bhiraj%20Tower%20at%20EmQuartier%2C%20689%20Sukhumvit%20Road%2C%20Phra%20Khanong%2C%20Khlong%20Toei%2C%20Bangkok%2010110" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yum! Brands Thailand 总部 — 689 Bhiraj Tower at EmQuartier, 689 Sukhumvit Road, Phra Khanong, Khlong Toei, Bangkok 10110`, this); return false;">📋 复制地址</button>
+          <a href="https://www.kfc.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 约 700+ (52% 炸鸡市场份额) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国炸鸡市场 52% 份额 — 受到中国郑新 + 韩式 Bonchon/BHC/Pelicana 冲击 — 2024 QSR 市场 477 亿泰铢 | 来源 Nation Thailand 2024 + KFC 2024 报告</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">美国 Yum! Brands (Yum China 2020 分拆但泰国归 Yum! Brands) · 加盟: 3 家加盟商: The QSR of Asia + Central Restaurants Group (CRG) + Restaurants Development</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 炸鸡之王 — 嘉豪对接：酱料 (炸鸡蘸酱) + 炒菜机器人 (备用厨房)</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 泰式火锅连锁</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">MK Restaurant (MK 火锅)</div>
+      <div class="name-en">MK Restaurants</div>
+      <div class="phone-block"><a href="tel:+6627197300" class="phone-link">📞 (662) 719-7300<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>MK Restaurant Group HQ — 4/1 Soi Ramkhamhaeng 8, Ramkhamhaeng Rd, Hua Mak, Bangkapi, Bangkok 10240</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6627197300', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('MK Restaurant (MK 火锅)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=MK%20Restaurants%20MK%20Restaurant%20Group%20HQ%20%E2%80%94%204/1%20Soi%20Ramkhamhaeng%208%2C%20Ramkhamhaeng%20Rd%2C%20Hua%20Mak%2C%20Bangkapi%2C%20Bangkok%2010240" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`MK Restaurant Group HQ — 4/1 Soi Ramkhamhaeng 8, Ramkhamhaeng Rd, Hua Mak, Bangkapi, Bangkok 10240`, this); return false;">📋 复制地址</button>
+          <a href="https://www.mkrestaurant.com" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 455 (62 年历史) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国最大火锅连锁 455 店 — 62 年历史 — 年营收近 100 亿泰铢 — 烤鸭日均 2 万只 (全球最大之一) — 2005 推家庭照纪念 — 2019 收购 Laem Chareon Seafood 65% (20 亿泰铢) | 来源 VF Franchise Consulting 2024 + Bangkok Post</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">MK Restaurant Group PCL — 泰国上市公司 · 加盟: MK Restaurant Group 直营</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰国火锅之王 — 嘉豪重点对接：火锅蘸酱+川菜复合调味料直供 455 店</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 咖啡连锁 (PTG 加油站)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">PunThai Coffee (普泰咖啡)</div>
+      <div class="name-en">PunThai Coffee</div>
+      <div class="phone-block"><a href="tel:+6627187000" class="phone-link">📞 +66 2 718 7000 (PTG)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>PTG Energy Public Company Limited — 1/1 Soi Ramkhamhaeng 38, Ramkhamhaeng Rd, Hua Mak, Bangkapi, Bangkok 10240</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6627187000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('PunThai Coffee (普泰咖啡)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=PunThai%20Coffee%20PTG%20Energy%20Public%20Company%20Limited%20%E2%80%94%201/1%20Soi%20Ramkhamhaeng%2038%2C%20Ramkhamhaeng%20Rd%2C%20Hua%20Mak%2C%20Bangkapi%2C%20Bangkok%2010240" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`PTG Energy Public Company Limited — 1/1 Soi Ramkhamhaeng 38, Ramkhamhaeng Rd, Hua Mak, Bangkapi, Bangkok 10240`, this); return false;">📋 复制地址</button>
+          <a href="https://www.punthaicoffee.com" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 1126 (Q3 2024, 增长 49%) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国第 2 大咖啡 1126 店 — 2024 新开 244 店 — Q3 销售 5.73 亿泰铢 (同比 +77%) — 计划 2027 到 5000 店 | 来源 World Coffee Portal 2024</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">PTG Energy (泰国能源) · 加盟: PTG Energy 直营 — 加油站便利店模式</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ PTG 加油站咖啡 — 嘉豪对接：加油站便利店渠道+酱料铺 1126 店</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 咖啡连锁 (Bangchak 加油站)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Inthanin Coffee (因塔宁咖啡)</div>
+      <div class="name-en">Inthanin Coffee</div>
+      <div class="phone-block"><a href="tel:+6623354999" class="phone-link">📞 +66 2 335 4999 (Bangchak)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Bangchak Corporation Public Company Limited — 209/22 Tower B, M Tower, Sukhumvit 21 (Asoke), Khlong Toei Nuea, Watthana, Bangkok 10110</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6623354999', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Inthanin Coffee (因塔宁咖啡)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Inthanin%20Coffee%20Bangchak%20Corporation%20Public%20Company%20Limited%20%E2%80%94%20209/22%20Tower%20B%2C%20M%20Tower%2C%20Sukhumvit%2021%20%28Asoke%29%2C%20Khlong%20Toei%20Nuea%2C%20Watthana%2C%20Bangkok%2010110" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Bangchak Corporation Public Company Limited — 209/22 Tower B, M Tower, Sukhumvit 21 (Asoke), Khlong Toei Nuea, Watthana, Bangkok 10110`, this); return false;">📋 复制地址</button>
+          <a href="https://www.inthanin.com" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 1003 (Q3 2024) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国第 3 大咖啡 1003 店 — 2024 净减 23 店 — 主打泰国本土咖啡 | 来源 World Coffee Portal 2024</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">Bangchak Corporation (泰国能源) · 加盟: Bangchak 直营 — 加油站模式</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Bangchak 加油站咖啡 — 嘉豪对接：Bangchak 加油站便利店</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 咖啡连锁 (高端)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Starbucks Thailand (星巴克泰国)</div>
+      <div class="name-en">Starbucks Thailand</div>
+      <div class="phone-block"><a href="tel:+6626581000" class="phone-link">📞 +66 2 658 1000 (Coffee Concepts Thailand)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Coffee Concepts Thailand — 319 Chamchuri Square, 11th Floor, Phaya Thai Road, Pathum Wan, Bangkok 10330</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626581000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Starbucks Thailand (星巴克泰国)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Starbucks%20Thailand%20Coffee%20Concepts%20Thailand%20%E2%80%94%20319%20Chamchuri%20Square%2C%2011th%20Floor%2C%20Phaya%20Thai%20Road%2C%20Pathum%20Wan%2C%20Bangkok%2010330" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Coffee Concepts Thailand — 319 Chamchuri Square, 11th Floor, Phaya Thai Road, Pathum Wan, Bangkok 10330`, this); return false;">📋 复制地址</button>
+          <a href="https://www.starbucks.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 500 (计划 2030 到 800) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国 500 店 (1998 进入) — 2024 营收 100+ 亿泰铢 — 计划 2030 到 800 店 — 主推 Drive-Thru 模式 — 加盟商 F&N + Maxim's Group 共享香港/澳门/越南/柬埔寨/新加坡/老挝门店 | 来源 World Coffee Portal 2025 + Tatler Asia</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">美国 Starbucks Corporation — 泰国由 Coffee Concepts Thailand 独家加盟 (F&N Singapore + Maxim's Group Hong Kong 合资) · 加盟: Coffee Concepts Thailand (F&N + Maxim's Group 合资)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 高端咖啡 — 嘉豪对接：酱料直供 500 店</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 咖啡 + 餐厅</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Black Canyon Coffee (黑峡谷咖啡)</div>
+      <div class="name-en">Black Canyon Coffee</div>
+      <div class="phone-block"><a href="tel:+6623128000" class="phone-link">📞 (662) 312 8000<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Black Canyon (Thailand) — 99/9 Moo 5, Bang Phli Industrial Estate, Bang Phli, Samut Prakan 10540</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6623128000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Black Canyon Coffee (黑峡谷咖啡)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Black%20Canyon%20Coffee%20Black%20Canyon%20%28Thailand%29%20%E2%80%94%2099/9%20Moo%205%2C%20Bang%20Phli%20Industrial%20Estate%2C%20Bang%20Phli%2C%20Samut%20Prakan%2010540" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Black Canyon (Thailand) — 99/9 Moo 5, Bang Phli Industrial Estate, Bang Phli, Samut Prakan 10540`, this); return false;">📋 复制地址</button>
+          <a href="https://www.blackcanyoncoffee.com" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 150+ (泰国最大本土咖啡品牌) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国最大本土咖啡 (150+) — 兼具餐厅功能 (Thai+西式) — 国际庄食品+咖啡 | 来源 Thailand For Visitors + Kasikorn Research</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">Black Canyon (Thailand) Co., Ltd. — 泰国本土 · 加盟: Black Canyon 直营</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰国本土 — 嘉豪对接：本土咖啡餐厅双业态</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 多品牌餐厅集团</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Central Restaurants Group (CRG)</div>
+      <div class="name-en">Central Restaurants Group (CRG)</div>
+      <div class="phone-block"><a href="tel:+6627937777" class="phone-link">📞 +66 2 793 7777<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Central Restaurants Group — 999/1 Rama I Rd, Pathum Wan, Bangkok 10330 (Central World)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6627937777', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Central Restaurants Group (CRG)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Central%20Restaurants%20Group%20%28CRG%29%20Central%20Restaurants%20Group%20%E2%80%94%20999/1%20Rama%20I%20Rd%2C%20Pathum%20Wan%2C%20Bangkok%2010330%20%28Central%20World%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Central Restaurants Group — 999/1 Rama I Rd, Pathum Wan, Bangkok 10330 (Central World)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.crg.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 1600 (21 品牌) — 计划 2028 到 2000 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 21 品牌 1600 店 — KFC / Auntie Anne's / Mister Donuts / Yoshinoya / Ootoya / Shinkanzen Sushi / Terrace Na Bangkok / Coal Stone Creamery / Som Tam Nua / Laem Chareon Seafood — 2024 新开 100-120 店 — 5 年 60 亿泰铢投资计划 | 来源 Verdict Foodservice 2024 + Bangkok Post</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">Central Group (泰国最大零售集团) · 加盟: CRG 直营 + 部分加盟</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 多品牌餐厅集团 — 嘉豪对接：CRG 集采部谈 21 品牌直供</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 调味品品牌</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">RosDee (调味品)</div>
+      <div class="name-en">RosDee</div>
+      <div class="phone-block"><a href="tel:+6622457050" class="phone-link">📞 +66 2 245 7050<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Ajinomoto (Thailand) Co., Ltd. — 487/1 Si Ayutthaya Rd, Thanon Phaya Thai, Ratchathewi, Bangkok 10400</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6622457050', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('RosDee (调味品)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=RosDee%20Ajinomoto%20%28Thailand%29%20Co.%2C%20Ltd.%20%E2%80%94%20487/1%20Si%20Ayutthaya%20Rd%2C%20Thanon%20Phaya%20Thai%2C%20Ratchathewi%2C%20Bangkok%2010400" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Ajinomoto (Thailand) Co., Ltd. — 487/1 Si Ayutthaya Rd, Thanon Phaya Thai, Ratchathewi, Bangkok 10400`, this); return false;">📋 复制地址</button>
+          <a href="https://www.rosdee.com" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 【待 Thomas 实地核实】 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国 Chulalongkorn 2024 "Most Powerful Brand" 调味品类冠军 — 泰国方便米饭+调料前 1 | 来源 Chulalongkorn 2024 Most Powerful Brands</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">Ajinomoto (Thailand) Co., Ltd. — 日本味之素泰国 · 加盟: Ajinomoto 直营</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰国调味品冠军 — 嘉豪参考：竞品调研</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 调味品+方便食品 (即食面)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Mama Noodles (妈妈牌方便面)</div>
+      <div class="name-en">Mama Brand</div>
+      <div class="phone-block"><a href="tel:+6623744730" class="phone-link">📞 02-374-4730<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Thai President Foods — 304 TF Bldg., Srinakarin Rd., Huamark, Bangkapi, Bangkok 10240</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6623744730', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Mama Noodles (妈妈牌方便面)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mama%20Brand%20Thai%20President%20Foods%20%E2%80%94%20304%20TF%20Bldg.%2C%20Srinakarin%20Rd.%2C%20Huamark%2C%20Bangkapi%2C%20Bangkok%2010240" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Thai President Foods — 304 TF Bldg., Srinakarin Rd., Huamark, Bangkapi, Bangkok 10240`, this); return false;">📋 复制地址</button>
+          <a href="https://www.mama.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 【待 Thomas 实地核实】 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国 Chulalongkorn 2024 "Most Powerful Brand" 即食面类冠军 — 全球方便面前 5 | 来源 Chulalongkorn 2024 + Mama 官网</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">Thai President Foods (Saha Pathanapibul 集团) · 加盟: Thai President Foods 直营</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 全球方便面前 5 — 嘉豪参考：调味品市场容量</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 泰餐连锁 + 烘焙</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">S&P Restaurants (S&P 餐厅)</div>
+      <div class="name-en">S&P Restaurants</div>
+      <div class="phone-block"><a href="tel:+6626581000" class="phone-link">📞 +66 2 658 1000<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>S&P Syndicate PCL — 161/2 Soi Mahadlek Luang 1, Ratchadamri Rd, Lumpini, Pathum Wan, Bangkok 10330</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626581000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('S&P Restaurants (S&P 餐厅)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=S%26P%20Restaurants%20S%26P%20Syndicate%20PCL%20%E2%80%94%20161/2%20Soi%20Mahadlek%20Luang%201%2C%20Ratchadamri%20Rd%2C%20Lumpini%2C%20Pathum%20Wan%2C%20Bangkok%2010330" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`S&P Syndicate PCL — 161/2 Soi Mahadlek Luang 1, Ratchadamri Rd, Lumpini, Pathum Wan, Bangkok 10330`, this); return false;">📋 复制地址</button>
+          <a href="https://www.sprestaurant.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 约 100+ (全国泰餐连锁) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国老牌泰餐+烘焙连锁 — 标准化 (中央厨房配送) — 适合外国人口味 | 来源 Thailand For Visitors</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">S&P Syndicate PCL — 泰国上市公司 · 加盟: S&P 直营 + 加盟</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰餐标准化 — 嘉豪参考：调味品标准化输出</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 西式快餐 (冰淇淋+简餐)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Swensen's (斯旺森)</div>
+      <div class="name-en">Swensen's</div>
+      <div class="phone-block"><a href="tel:+6623657500" class="phone-link">📞 +66 2 365 7500<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Minor International PCL — 59 Q House Ploenchit, Ploenchit Rd, Lumpini, Pathum Wan, Bangkok 10330</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6623657500', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Swensen's (斯旺森)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Swensen%27s%20Minor%20International%20PCL%20%E2%80%94%2059%20Q%20House%20Ploenchit%2C%20Ploenchit%20Rd%2C%20Lumpini%2C%20Pathum%20Wan%2C%20Bangkok%2010330" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Minor International PCL — 59 Q House Ploenchit, Ploenchit Rd, Lumpini, Pathum Wan, Bangkok 10330`, this); return false;">📋 复制地址</button>
+          <a href="https://www.swensens.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 约 80+ (全国) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国 Minor 集团旗下 — 冰淇淋+西式简餐 — 商场主力店 | 来源 Thailand For Visitors</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">Minor International PCL — 泰国 Minor 集团 · 加盟: Minor 直营</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 西式快餐 — 嘉豪参考：酱料+调味品</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 西式快餐 (披萨)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Pizza Hut Thailand (必胜客)</div>
+      <div class="name-en">Pizza Hut Thailand</div>
+      <div class="phone-block"><a href="tel:+6622610300" class="phone-link">📞 +66 2 261 0300<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yum! Brands Thailand 总部 — 689 Bhiraj Tower at EmQuartier, Bangkok 10110</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6622610300', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Pizza Hut Thailand (必胜客)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Pizza%20Hut%20Thailand%20Yum%21%20Brands%20Thailand%20%E6%80%BB%E9%83%A8%20%E2%80%94%20689%20Bhiraj%20Tower%20at%20EmQuartier%2C%20Bangkok%2010110" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yum! Brands Thailand 总部 — 689 Bhiraj Tower at EmQuartier, Bangkok 10110`, this); return false;">📋 复制地址</button>
+          <a href="https://www.pizzahut.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 约 200+ 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国 Pizza Hut 长期市场前 2 (与 Pizza 4P's 并列) | 来源 Yum Thailand 官网</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">美国 Yum! Brands — 同 KFC 同一加盟体系 · 加盟: The QSR of Asia / CRG 加盟</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 西式披萨 — 嘉豪参考：酱料 (番茄酱+披萨酱)</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 泰式海鲜连锁</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Laem Chareon Seafood (蓝嘉龙海鲜)</div>
+      <div class="name-en">Laem Chareon Seafood</div>
+      <div class="phone-block"><a href="tel:+6626581000" class="phone-link">📞 +66 2 658 1000<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Laem Chareon Seafood — CentralWorld, 999/9 Rama I Rd, Pathum Wan, Bangkok 10330</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626581000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Laem Chareon Seafood (蓝嘉龙海鲜)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Laem%20Chareon%20Seafood%20Laem%20Chareon%20Seafood%20%E2%80%94%20CentralWorld%2C%20999/9%20Rama%20I%20Rd%2C%20Pathum%20Wan%2C%20Bangkok%2010330" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Laem Chareon Seafood — CentralWorld, 999/9 Rama I Rd, Pathum Wan, Bangkok 10330`, this); return false;">📋 复制地址</button>
+          <a href="https://www.laemchareonseafood.com" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 33 (Bangkok + North + Northeast) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ MK 旗下海鲜连锁 — 2019 MK 收购 65% (20 亿泰铢) — 2024 新开 6 家 — 总 33 家 | 来源 VF Franchise Consulting 2024</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">MK Restaurant Group 持股 65% · 加盟: MK Restaurant Group 控股</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ MK 旗下海鲜 — 嘉豪对接：海鲜酱料直供</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 茶饮+冰淇淋 (中国出海)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Mixue (蜜雪冰城)</div>
+      <div class="name-en">Mixue</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>曼谷 【待 Thomas 实地核实】</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待查】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Mixue (蜜雪冰城)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mixue%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`曼谷 【待 Thomas 实地核实】`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 约 3000+ (全球) — 泰国门店数【待 Thomas 实地核实】 店 · 曼谷</div>
+        <div style="margin-top:4px;">https://www.mixue.com | 来源 ★ 中国最大茶饮出海品牌 — 全球 30000+ 店 — 价格 5-10 元 (泰国本土化为 25-50 THB)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">中国蜜雪冰城股份有限公司 (Mixue Group) · 加盟: 蜜雪总部直营+本地加盟</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 Mixue 官网 + 媒体</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 日式料理连锁</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Oishi (大石日本料理)</div>
+      <div class="name-en">Oishi</div>
+      <div class="phone-block"><a href="tel:+6626587100" class="phone-link">📞 +66 2 658 7100<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Oishi Group Holdings — 99/1 Ratchadamri Rd, Lumpini, Pathum Wan, Bangkok 10330</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626587100', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Oishi (大石日本料理)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Oishi%20Oishi%20Group%20Holdings%20%E2%80%94%2099/1%20Ratchadamri%20Rd%2C%20Lumpini%2C%20Pathum%20Wan%2C%20Bangkok%2010330" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Oishi Group Holdings — 99/1 Ratchadamri Rd, Lumpini, Pathum Wan, Bangkok 10330`, this); return false;">📋 复制地址</button>
+          <a href="https://www.oishi.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 约 200+ (Oishi Grand + Oishi Buffet + Sushi Bar + Shabu) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国日料前 3 (Oishi Grand 餐厅 / Oishi Buffet 自助 / Oishi Sushi Bar 寿司 / Oishi Shabu 涮涮锅) | 来源 Thailand For Visitors</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">Oishi Group Holdings PCL — 泰国上市公司 · 加盟: Oishi 直营 + 加盟</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰国日料前 3 — 嘉豪参考：日本酱油+日料酱料</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 茶饮 (PTT OR 旗下)</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Pearly Tea</div>
+      <div class="name-en">Pearly Tea</div>
+      <div class="phone-block"><a href="tel:+6625372000" class="phone-link">📞 +66 2 537 2000<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>PTT OR — 555/1 Vibhavadi Rangsit Road, Chatuchak, Bangkok 10900</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6625372000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Pearly Tea', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Pearly%20Tea%20PTT%20OR%20%E2%80%94%20555/1%20Vibhavadi%20Rangsit%20Road%2C%20Chatuchak%2C%20Bangkok%2010900" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`PTT OR — 555/1 Vibhavadi Rangsit Road, Chatuchak, Bangkok 10900`, this); return false;">📋 复制地址</button>
+          <a href="https://www.pearlytea.com" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 约 80+ (与 Pacamera Coffee 共 120+) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ PTT OR 旗下茶饮 — 与 Pacamera Coffee 共 120+ 店 | 来源 PTT OR 2024 Q3 报告</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">PTT Oil and Retail Business (PTT OR) · 加盟: PTT OR 直营</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ PTT 系茶饮 — 嘉豪对接：PTT OR 渠道+酱料</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 西式牛排连锁</span><span class="source-tag">Sheet 3 连锁</span></div>
+      <div class="name">Sizzler Thailand (西式牛排)</div>
+      <div class="name-en">Sizzler Thailand</div>
+      <div class="phone-block"><a href="tel:+6623912331" class="phone-link">📞 +66 2 391 2331<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Sizzler Thailand HQ — 689 Sukhumvit Road, Bangkok 10110</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6623912331', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Sizzler Thailand (西式牛排)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Sizzler%20Thailand%20Sizzler%20Thailand%20HQ%20%E2%80%94%20689%20Sukhumvit%20Road%2C%20Bangkok%2010110" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Sizzler Thailand HQ — 689 Sukhumvit Road, Bangkok 10110`, this); return false;">📋 复制地址</button>
+          <a href="https://www.sizzler.co.th" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>📊 约 40+ 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 泰国老牌西式牛排 — 商场主力店 — 标准化 | 来源 Thailand For Visitors + Sizzler 官网</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">Sizzler International (美国) — 泰国由皇家资产 (Royal Asset) 经营 · 加盟: Royal Asset 加盟</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 西式牛排 — 嘉豪参考：黑胡椒酱+西式调味品</div>
+    </div></div>
+</section>
+<section id="sheet4" class="section">
+  <div class="section-title" style="background:#C00000;">4. 曼谷 Yaowarat 唐人街中餐厅信息 (15 条)</div>
+  <div class="section-body"><div class="card">
+      <div class="card-head"><span class="badge">• 中餐/泰式中餐融合 (高端)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Chop Chop Cook Shop</div>
+      <div class="name-en">Chop Chop Cook Shop</div>
+      <div class="phone-block"><a href="tel:+66970080519" class="phone-link">📞 +66 97 008 0519<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Ground Floor, 328 Yaowarat Rd, Chakkrawat, Samphanthawong, Bangkok 10100 (5 层 Art Deco 建筑 Goldsmith 底层)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+66970080519', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Chop Chop Cook Shop', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chop%20Chop%20Cook%20Shop%20Ground%20Floor%2C%20328%20Yaowarat%20Rd%2C%20Chakkrawat%2C%20Samphanthawong%2C%20Bangkok%2010100%20%285%20%E5%B1%82%20Art%20Deco%20%E5%BB%BA%E7%AD%91%20Goldsmith%20%E5%BA%95%E5%B1%82%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Ground Floor, 328 Yaowarat Rd, Chakkrawat, Samphanthawong, Bangkok 10100 (5 层 Art Deco 建筑 Goldsmith 底层)`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 3.6/5 (Tripadvisor) (27+) · 💰 800-1500</div>
+        <div style="margin-top:4px;">中泰融合 (Chef David Thompson Michelin Plate 2024/2025) — 招牌烤鸭汤 + 香脆虾片 + 生姜奶冻 | 周二-周日 12:00-22:00 (周一休息)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 800-1500 (168-315) · 周二-周日 12:00-22:00 (周一休息)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 嘉豪高端粤菜/中式融合接触点 — Michelin Plate 餐厅 — 由曼谷 Nahm 主厨 David Thompson 打造</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 潮州菜 (老字号)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Nai Ek Roll Noodle (Nak Eik 卷面)</div>
+      <div class="name-en">Nai Ek Roll Noodle</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Rd 主街 (Charm Noodle 附近), Samphanthawong / Yaowarat</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Nai Ek Roll Noodle (Nak Eik 卷面)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Nai%20Ek%20Roll%20Noodle%20Yaowarat%20Rd%20%E4%B8%BB%E8%A1%97%20%28Charm%20Noodle%20%E9%99%84%E8%BF%91%29%2C%20Samphanthawong%20/%20Yaowarat%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Rd 主街 (Charm Noodle 附近), Samphanthawong / Yaowarat`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (500+) · 💰 70-150 (Kway Chap 套餐)</div>
+        <div style="margin-top:4px;">潮州粿汁 (Kway Chap — 卤汁+猪杂+脆皮肉+米饭/面条) | 8:00-18:00 (全天, 卖完即止)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 70-150 (Kway Chap 套餐) (15-32) · 8:00-18:00 (全天, 卖完即止)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 必吃老字号 — Michelin 推荐 — 嘉豪川菜复合调味料目标客户 (使用类似辣味基础)</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 潮州菜 (老字号 1942 创立)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Lao Tang Braised Goose (老堂卤鹅)</div>
+      <div class="name-en">Lao Tang Braised Goose</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Rd 主街, Samphanthawong / Yaowarat</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Lao Tang Braised Goose (老堂卤鹅)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lao%20Tang%20Braised%20Goose%20Yaowarat%20Rd%20%E4%B8%BB%E8%A1%97%2C%20Samphanthawong%20/%20Yaowarat%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Rd 主街, Samphanthawong / Yaowarat`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (300+) · 💰 200-400</div>
+        <div style="margin-top:4px;">潮州卤鹅+鹅血+鹅肠+苦瓜汤 — 1942 年创立 (83 年历史) | 8:30-14:00 (中午卖完即止)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 200-400 (42-84) · 8:30-14:00 (中午卖完即止)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 卤鹅老字号 — 83 年历史 — 嘉豪卤水酱料+酱油参考样本</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中餐/潮州菜 (老字号)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Cathay Fish Maw (国泰鱼鳔汤)</div>
+      <div class="name-en">Cathay Fish Maw</div>
+      <div class="phone-block"><a href="tel:+66816239107" class="phone-link">📞 081 623 9107<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Soi Mangkon, Samphanthawong, Bangkok 10100 (近 Pichaiyathibodi Building 停车场, Sowniam Shrine 对面)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+66816239107', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Cathay Fish Maw (国泰鱼鳔汤)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cathay%20Fish%20Maw%20Yaowarat%20Soi%20Mangkon%2C%20Samphanthawong%2C%20Bangkok%2010100%20%28%E8%BF%91%20Pichaiyathibodi%20Building%20%E5%81%9C%E8%BD%A6%E5%9C%BA%2C%20Sowniam%20Shrine%20%E5%AF%B9%E9%9D%A2%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Soi Mangkon, Samphanthawong, Bangkok 10100 (近 Pichaiyathibodi Building 停车场, Sowniam Shrine 对面)`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (200+) · 💰 60-150</div>
+        <div style="margin-top:4px;">潮州鱼鳔汤 (Fish Maw Soup) + 鸡肉/蟹/鲍鱼/鹌鹑蛋 — 40+ 年历史 | 7:30-14:00 (卖完即止)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 60-150 (13-32) · 7:30-14:00 (卖完即止)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 鱼鳔汤老字号 — 40+ 年历史 — 嘉豪潮州菜+汤料参考样本</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 海鲜/中泰融合 (街边大排档)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">T&K Seafood (T&K 海鲜)</div>
+      <div class="name-en">T&K Seafood</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Road at Phadung Dao intersection, Samphanthawong, Bangkok 10100 (绿色装饰, 与对面 Lek & Rut 红店竞争)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('02 622 0705 / 【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('T&K Seafood (T&K 海鲜)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=T%26K%20Seafood%20Yaowarat%20Road%20at%20Phadung%20Dao%20intersection%2C%20Samphanthawong%2C%20Bangkok%2010100%20%28%E7%BB%BF%E8%89%B2%E8%A3%85%E9%A5%B0%2C%20%E4%B8%8E%E5%AF%B9%E9%9D%A2%20Lek%20%26%20Rut%20%E7%BA%A2%E5%BA%97%E7%AB%9E%E4%BA%89%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Road at Phadung Dao intersection, Samphanthawong, Bangkok 10100 (绿色装饰, 与对面 Lek & Rut 红店竞争)`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (1000+) · 💰 300-800</div>
+        <div style="margin-top:4px;">海鲜烧烤 (烤大虾+蟹+贝类) + 炒菜 + 啤酒 — Yaowarat 夜市地标 | 17:30-00:00 (晚餐+夜市时段)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 300-800 (63-168) · 17:30-00:00 (晚餐+夜市时段)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 海鲜地标 — 与对面 Lek & Rut 红店竞争 — 嘉豪酱料直供候选</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 海鲜/中泰融合 (街边大排档)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Lek & Rut Seafood (Lek & Rut 海鲜)</div>
+      <div class="name-en">Lek & Rut Seafood</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Road at Phadung Dao intersection (Phadung Dao / Soi Texas), Samphanthawong, Bangkok 10100 (红色装饰, 与对面 T&K 绿店竞争)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Lek & Rut Seafood (Lek & Rut 海鲜)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lek%20%26%20Rut%20Seafood%20Yaowarat%20Road%20at%20Phadung%20Dao%20intersection%20%28Phadung%20Dao%20/%20Soi%20Texas%29%2C%20Samphanthawong%2C%20Bangkok%2010100%20%28%E7%BA%A2%E8%89%B2%E8%A3%85%E9%A5%B0%2C%20%E4%B8%8E%E5%AF%B9%E9%9D%A2%20T%26K%20%E7%BB%BF%E5%BA%97%E7%AB%9E%E4%BA%89%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Road at Phadung Dao intersection (Phadung Dao / Soi Texas), Samphanthawong, Bangkok 10100 (红色装饰, 与对面 T&K 绿店竞争)`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (500+) · 💰 300-800</div>
+        <div style="margin-top:4px;">海鲜烧烤 (烤虾+墨鱼+蟹) + 泰式凉拌 (yum) — 红店 | 17:30-00:00 (晚餐+夜市时段)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 300-800 (63-168) · 17:30-00:00 (晚餐+夜市时段)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 海鲜地标 (红店) — 嘉豪海鲜酱+辣酱参考样本</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 潮州菜 (老字号 — 精致)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Laoteng (潮州老店)</div>
+      <div class="name-en">Laoteng</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Rd 主街, Samphanthawong / Yaowarat</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Laoteng (潮州老店)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Laoteng%20Yaowarat%20Rd%20%E4%B8%BB%E8%A1%97%2C%20Samphanthawong%20/%20Yaowarat%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Rd 主街, Samphanthawong / Yaowarat`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (200+) · 💰 300-800</div>
+        <div style="margin-top:4px;">精致潮州菜 (Teochew Cuisine) + Dim Sum 茶点 + Fish Maw Soup 鱼鳔汤 + Stir-fried Noodles + 蒜香 | 10:00-22:00 (全天)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 300-800 (63-168) · 10:00-22:00 (全天)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 精致潮州菜 — 嘉豪中高端粤菜/潮州菜参考样本</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 港式/广式茶餐厅 (包点)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Her Cheun Fong (茶餐厅)</div>
+      <div class="name-en">Her Cheun Fong</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Rd 主街, Samphanthawong / Yaowarat</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Her Cheun Fong (茶餐厅)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Her%20Cheun%20Fong%20Yaowarat%20Rd%20%E4%B8%BB%E8%A1%97%2C%20Samphanthawong%20/%20Yaowarat%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Rd 主街, Samphanthawong / Yaowarat`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (300+) · 💰 200-500</div>
+        <div style="margin-top:4px;">广式包点 (蘑菇/桃子造型包) + 脆皮肉 (Crispy Pork Belly) + 凉茶 (Herbal Soups) + 广式香肠 | 8:00-20:00</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 200-500 (42-105) · 8:00-20:00</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 广式茶餐厅 — 嘉豪粤菜酱料 (蜜汁叉烧/卤水) 参考样本</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 咖啡+融合餐厅 (精品)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">The Mustang Blu</div>
+      <div class="name-en">The Mustang Blu</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Rd 主街 (改造历史建筑), Samphanthawong / Yaowarat</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('The Mustang Blu', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=The%20Mustang%20Blu%20Yaowarat%20Rd%20%E4%B8%BB%E8%A1%97%20%28%E6%94%B9%E9%80%A0%E5%8E%86%E5%8F%B2%E5%BB%BA%E7%AD%91%29%2C%20Samphanthawong%20/%20Yaowarat%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Rd 主街 (改造历史建筑), Samphanthawong / Yaowarat`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Instagram + Google Maps) (500+) · 💰 300-800</div>
+        <div style="margin-top:4px;">咖啡 (Charcoal Latte) + 泰式奶茶 + 糕点 — 在地艺术感 + 改建物 | 9:00-22:00</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 300-800 (63-168) · 9:00-22:00</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 精品咖啡+融合 — 嘉豪炒菜机器人+新派中餐参考</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 港式/广式拌面</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Charm Noodle (招牌黑酱油拌面)</div>
+      <div class="name-en">Charm Noodle</div>
+      <div class="phone-block"><a href="tel:+66958232397" class="phone-link">📞 095 823 2397<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Opposite I'm Chinatown, Yaowarat Road, Samphanthawong, Bangkok 10100</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+66958232397', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Charm Noodle (招牌黑酱油拌面)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Charm%20Noodle%20Opposite%20I%27m%20Chinatown%2C%20Yaowarat%20Road%2C%20Samphanthawong%2C%20Bangkok%2010100" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Opposite I'm Chinatown, Yaowarat Road, Samphanthawong, Bangkok 10100`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (200+) · 💰 70-100</div>
+        <div style="margin-top:4px;">招牌黑酱油拌面 (Dark Soy Sauce Mixed Noodles) + 巨型肉丸拌面 + 炸猪皮拌面 + 酱牛肉拌面 + 鲜虾云吞 | 11:00-22:00</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 70-100 (15-21) · 11:00-22:00</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 广式拌面老字号 — 嘉豪酱油参考样本</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中餐/中泰融合咖喱 (街边)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Jek Pui Curry (红板凳咖喱)</div>
+      <div class="name-en">Jek Pui Curry</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Road, Samphanthawong, Bangkok 10100 (红板凳标志)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Jek Pui Curry (红板凳咖喱)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Jek%20Pui%20Curry%20Yaowarat%20Road%2C%20Samphanthawong%2C%20Bangkok%2010100%20%28%E7%BA%A2%E6%9D%BF%E5%87%B3%E6%A0%87%E5%BF%97%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Road, Samphanthawong, Bangkok 10100 (红板凳标志)`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (300+) · 💰 60-150</div>
+        <div style="margin-top:4px;">中式咖喱 (Chinese-Style Curry) — 12 道菜 — 猪肉南瓜咖喱+绿咖喱鸡+辣椒蟹+猪排咖喱+红酒鸡翅 | 14:00-22:00 (下午开业)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 60-150 (13-32) · 14:00-22:00 (下午开业)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 中式咖喱老字号 — 嘉豪咖喱+辣椒酱参考样本</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中餐/潮州粥 (老字号)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Jok's Kitchen (粥店)</div>
+      <div class="name-en">Jok's Kitchen</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Chao Phraya 河附近, Pom Prap Sattru Phai</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Jok's Kitchen (粥店)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Jok%27s%20Kitchen%20Chao%20Phraya%20%E6%B2%B3%E9%99%84%E8%BF%91%2C%20Pom%20Prap%20Sattru%20Phai%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Chao Phraya 河附近, Pom Prap Sattru Phai`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.0/5 (Google Maps) (100+) · 💰 50-100</div>
+        <div style="margin-top:4px;">泰式潮州粥 (Jok) — 中泰融合早餐 — 与 Yaowarat 同属 Samphanthawong 区域 | 5:00-11:00 (早餐时段)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 50-100 (11-21) · 5:00-11:00 (早餐时段)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 中泰融合早餐 — 嘉豪早餐酱料+粥调味参考</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中餐/潮州菜 (老字号)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Kor Chun Huad (郭春华)</div>
+      <div class="name-en">Kor Chun Huad</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat 周边后巷, Samphanthawong / Yaowarat 周边</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Kor Chun Huad (郭春华)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Kor%20Chun%20Huad%20Yaowarat%20%E5%91%A8%E8%BE%B9%E5%90%8E%E5%B7%B7%2C%20Samphanthawong%20/%20Yaowarat%20%E5%91%A8%E8%BE%B9%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat 周边后巷, Samphanthawong / Yaowarat 周边`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (200+) · 💰 200-500</div>
+        <div style="margin-top:4px;">潮州菜 (Teochew) — 与 Laoteng 同一菜系 — 老字号 | 10:00-22:00</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 200-500 (42-105) · 10:00-22:00</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 潮州老字号 — 嘉豪参考样本</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中餐/潮州河粉 (街边老字号)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Guay Jub Uan Pochana (河粉卷)</div>
+      <div class="name-en">Guay Jub Uan Pochana</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Rd 主街 (Pork Satay 摊位附近), Samphanthawong / Yaowarat</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Guay Jub Uan Pochana (河粉卷)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Guay%20Jub%20Uan%20Pochana%20Yaowarat%20Rd%20%E4%B8%BB%E8%A1%97%20%28Pork%20Satay%20%E6%91%8A%E4%BD%8D%E9%99%84%E8%BF%91%29%2C%20Samphanthawong%20/%20Yaowarat%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Rd 主街 (Pork Satay 摊位附近), Samphanthawong / Yaowarat`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (500+) · 💰 100-300</div>
+        <div style="margin-top:4px;">潮州河粉卷 (Guay Jub) + 烤肉串 (Pork Satay) — Yaowarat 夜市地标 | 17:00-00:00 (晚餐+夜市)</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 100-300 (21-63) · 17:00-00:00 (晚餐+夜市)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 河粉老字号 — 嘉豪潮州菜+酱料参考样本</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中餐/潮州猪脚 (老字号)</span><span class="source-tag">Sheet 4 中餐</span></div>
+      <div class="name">Pork Leg with Peanut Jae Ta (花生猪脚)</div>
+      <div class="name-en">Pork Leg with Peanut Jae Ta (ขาหมูใส่ถั่วเจ๊ตา)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat 附近 (Talat Noi), Samphanthawong / Talat Noi</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Pork Leg with Peanut Jae Ta (花生猪脚)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Pork%20Leg%20with%20Peanut%20Jae%20Ta%20%28%E0%B8%82%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B9%83%E0%B8%AA%E0%B9%88%E0%B8%96%E0%B8%B1%E0%B9%88%E0%B8%A7%E0%B9%80%E0%B8%88%E0%B9%8A%E0%B8%95%E0%B8%B2%29%20Yaowarat%20%E9%99%84%E8%BF%91%20%28Talat%20Noi%29%2C%20Samphanthawong%20/%20Talat%20Noi%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat 附近 (Talat Noi), Samphanthawong / Talat Noi`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>⭐ 4.5/5 (Google Maps) (200+) · 💰 100-200</div>
+        <div style="margin-top:4px;">潮州花生猪脚 (Stewed Pork Leg with Peanuts) + 米饭 + 卤蛋 + 酸菜 — 60+ 年历史 | 10:00-16:00</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">人均 100-200 (21-42) · 10:00-16:00</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Talat Noi 花生猪脚 — 嘉豪卤水酱+潮州菜参考样本</div>
+    </div></div>
+</section>
+<section id="sheet5" class="section">
+  <div class="section-title" style="background:#BF8F00;">5. 曼谷 Yaowarat 唐人街中国超市联系信息 (13 条)</div>
+  <div class="section-body"><div class="card">
+      <div class="card-head"><span class="badge">• 中国商品综合超市 (Yaowarat 旗舰)</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Wang Zhong Wang Yaowarat 旗舰店 (王中王)</div>
+      <div class="name-en">Wang Zhong Wang Supermarket (Yaowarat Branch)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Rd 主街, Samphanthawong / Yaowarat</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Wang Zhong Wang Yaowarat 旗舰店 (王中王)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wang%20Zhong%20Wang%20Supermarket%20%28Yaowarat%20Branch%29%20Yaowarat%20Rd%20%E4%B8%BB%E8%A1%97%2C%20Samphanthawong%20/%20Yaowarat%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Rd 主街, Samphanthawong / Yaowarat`, this); return false;">📋 复制地址</button>
+          <a href="mailto:info@wzw-th.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Samphanthawong / Yaowarat</div>
+        <div style="margin-top:4px;">中国零食 + 中国调味料 + 中国茶叶 + 中国食品礼盒 + 火锅食材 + 网红零食 (中国爆款 + 季节限定月饼) | 营业 9:00-22:00 | 创办 2021</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2021 · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 王中王 Yaowarat 旗舰店 — 王中王是曼谷中国超市前 1 (7 家分店: Yaowarat/Chulalongkorn/Ladkrabang/Thiam Ruam Mit + MBK/Terminal 21/Silom Edge 加盟店) — 嘉豪重点对接：酱料+调味料 SKU 进店渠道</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品超市 (老字号)</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Lim Hiang Ha (林香虾)</div>
+      <div class="name-en">Lim Hiang Ha</div>
+      <div class="phone-block"><a href="tel:+66845234888" class="phone-link">📞 08 4523 4888 / 0 2639 1018<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>552, 554 Soi 8, Yaowarat Road, Samphanthawong, Samphanthawong, Bangkok 10100 (New Empire Hotel 底层 2 个店面)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+66845234888', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Lim Hiang Ha (林香虾)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lim%20Hiang%20Ha%20552%2C%20554%20Soi%208%2C%20Yaowarat%20Road%2C%20Samphanthawong%2C%20Samphanthawong%2C%20Bangkok%2010100%20%28New%20Empire%20Hotel%20%E5%BA%95%E5%B1%82%202%20%E4%B8%AA%E5%BA%97%E9%9D%A2%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`552, 554 Soi 8, Yaowarat Road, Samphanthawong, Samphanthawong, Bangkok 10100 (New Empire Hotel 底层 2 个店面)`, this); return false;">📋 复制地址</button>
+          <a href="mailto:info@limhiangha.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Samphanthawong / Yaowarat</div>
+        <div style="margin-top:4px;">中国零食 + 中国饮料 + 中国调味料 + 季节限定 (月饼+年货) + 中国明星周边 | 营业 10:00-20:00 | 创办 2010s</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2010s · 可信度 ★★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Lim Hiang Ha 是曼谷中国超市标杆 — 149 评论 4.3 星 — Yaowarat 必逛 — 嘉豪重点对接：调味料 SKU 直供</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品杂货店</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Chinese Grocery Shop (Yaowarat 中国杂货)</div>
+      <div class="name-en">Chinese Grocery Shop</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>295-297 Yaowarat Rd, Samphanthawong, Bangkok 10100</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待查】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Chinese Grocery Shop (Yaowarat 中国杂货)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chinese%20Grocery%20Shop%20295-297%20Yaowarat%20Rd%2C%20Samphanthawong%2C%20Bangkok%2010100" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`295-297 Yaowarat Rd, Samphanthawong, Bangkok 10100`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Samphanthawong / Yaowarat</div>
+        <div style="margin-top:4px;">中国零食 + 中国调味料 + 中国茶叶</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 【待查】 · 可信度 ★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 中国杂货店 — 5.0 星 (4 评论) — 嘉豪小渠道对接</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品综合超市</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">L Yawaraj Str (L 耀华力)</div>
+      <div class="name-en">L Yawaraj Str</div>
+      <div class="phone-block"><a href="tel:+66222637612" class="phone-link">📞 02-226-3761-2<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>388 Yaowarat Rd., Khwaeng Samphanthawong, Khet Samphanthawong, Bangkok 10100</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+66222637612', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('L Yawaraj Str (L 耀华力)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=L%20Yawaraj%20Str%20388%20Yaowarat%20Rd.%2C%20Khwaeng%20Samphanthawong%2C%20Khet%20Samphanthawong%2C%20Bangkok%2010100" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`388 Yaowarat Rd., Khwaeng Samphanthawong, Khet Samphanthawong, Bangkok 10100`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Samphanthawong / Yaowarat</div>
+        <div style="margin-top:4px;">综合商品 (中国+本地) — 杂货 + 食品 + 日用品 | 营业 8:00-19:00</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 【待查】 · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 中国+综合超市 — YellowPages 收录 — 嘉豪小渠道对接</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品超市 (明星周边专营)</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Ho Chia (หอเจี๊ยะ)</div>
+      <div class="name-en">Ho Chia Chinese Supermarket (หอเจี๊ยะ ซุปเปอร์มาร์เก็ตจีน)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>【待 Thomas 实地核实具体街道】, 【待 Thomas 实地核实具体地址】</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Ho Chia (หอเจี๊ยะ)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ho%20Chia%20Chinese%20Supermarket%20%28%E0%B8%AB%E0%B8%AD%E0%B9%80%E0%B8%88%E0%B8%B5%E0%B9%8A%E0%B8%A2%E0%B8%B0%20%E0%B8%8B%E0%B8%B8%E0%B8%9B%E0%B9%80%E0%B8%9B%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%A1%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%81%E0%B9%87%E0%B8%95%E0%B8%88%E0%B8%B5%E0%B8%99%29%20%E3%80%90%E5%BE%85%20Thomas%20%E5%AE%9E%E5%9C%B0%E6%A0%B8%E5%AE%9E%E5%85%B7%E4%BD%93%E8%A1%97%E9%81%93%E3%80%91%2C%20%E3%80%90%E5%BE%85%20Thomas%20%E5%AE%9E%E5%9C%B0%E6%A0%B8%E5%AE%9E%E5%85%B7%E4%BD%93%E5%9C%B0%E5%9D%80%E3%80%91%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`【待 Thomas 实地核实具体街道】, 【待 Thomas 实地核实具体地址】`, this); return false;">📋 复制地址</button>
+          <a href="mailto:horjia1688@gmail.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · 【待 Thomas 实地核实具体地址】</div>
+        <div style="margin-top:4px;">中国零食 (明星周边限定) + 中国饮料 + 中国调味料 + 季节限定 + 中国明星周边 (Jackson Wang / Xiao Zhan / Wang Yibo) | 创办 2020s</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2020s · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Ho Chia 中国明星周边专营 — 4.9 星 16 评论 — 主打粉丝经济 (中国明星联名商品) — Biz Town in Town B10 456/15 Soi Ladprao 94 — 嘉豪对接：粉丝经济新渠道</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国+本地综合超市</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Heng Heng Supermarket (恒恒超市)</div>
+      <div class="name-en">Heng Heng Supermarket</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Rd 主街, Samphanthawong / Yaowarat</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Heng Heng Supermarket (恒恒超市)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Heng%20Heng%20Supermarket%20Yaowarat%20Rd%20%E4%B8%BB%E8%A1%97%2C%20Samphanthawong%20/%20Yaowarat%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Rd 主街, Samphanthawong / Yaowarat`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Samphanthawong / Yaowarat</div>
+        <div style="margin-top:4px;">中国零食 + 调味料 + 综合商品</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 【待查】 · 可信度 ★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 中国+综合超市 — 4.5 星 11 评论 — 嘉豪小渠道对接</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品杂货</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Lor Yaowarat Bangkok (耀华力后巷)</div>
+      <div class="name-en">Lor Yaowarat Bangkok</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Yaowarat Rd 后巷, Samphanthawong / Yaowarat</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Lor Yaowarat Bangkok (耀华力后巷)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lor%20Yaowarat%20Bangkok%20Yaowarat%20Rd%20%E5%90%8E%E5%B7%B7%2C%20Samphanthawong%20/%20Yaowarat%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Yaowarat Rd 后巷, Samphanthawong / Yaowarat`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Samphanthawong / Yaowarat</div>
+        <div style="margin-top:4px;">中国零食 + 调味料 + 综合商品</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 【待查】 · 可信度 ★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 后巷中国超市 — 4.4 星 24 评论 — 嘉豪小渠道对接</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品综合超市 (商场加盟店)</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Wang Zhong Wang CentralWorld (王中王 CentralWorld)</div>
+      <div class="name-en">Wang Zhong Wang Supermarket (CentralWorld Branch)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>CentralWorld, 999/9 Rama I Rd, Pathum Wan, Bangkok 10330 (商场内加盟店)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Wang Zhong Wang CentralWorld (王中王 CentralWorld)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wang%20Zhong%20Wang%20Supermarket%20%28CentralWorld%20Branch%29%20CentralWorld%2C%20999/9%20Rama%20I%20Rd%2C%20Pathum%20Wan%2C%20Bangkok%2010330%20%28%E5%95%86%E5%9C%BA%E5%86%85%E5%8A%A0%E7%9B%9F%E5%BA%97%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`CentralWorld, 999/9 Rama I Rd, Pathum Wan, Bangkok 10330 (商场内加盟店)`, this); return false;">📋 复制地址</button>
+          <a href="mailto:info@wzw-th.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Pathum Wan / CentralWorld</div>
+        <div style="margin-top:4px;">中国零食 + 调味料 + 网红爆款 | 营业 10:00-22:00 (商场营业时间) | 创办 2021</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2021 · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 王中王 CentralWorld — 高端商场渠道 — 嘉豪对接口径：高端华人游客</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品综合超市 (商场加盟店)</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Wang Zhong Wang MBK (王中王 MBK)</div>
+      <div class="name-en">Wang Zhong Wang Supermarket (MBK Branch)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>MBK Center, 444 Phaya Thai Rd, Pathum Wan, Bangkok 10330</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Wang Zhong Wang MBK (王中王 MBK)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wang%20Zhong%20Wang%20Supermarket%20%28MBK%20Branch%29%20MBK%20Center%2C%20444%20Phaya%20Thai%20Rd%2C%20Pathum%20Wan%2C%20Bangkok%2010330" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`MBK Center, 444 Phaya Thai Rd, Pathum Wan, Bangkok 10330`, this); return false;">📋 复制地址</button>
+          <a href="mailto:info@wzw-th.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Pathum Wan / MBK Center</div>
+        <div style="margin-top:4px;">中国零食 + 调味料 + 网红爆款 | 营业 10:00-22:00 (商场营业时间) | 创办 2021</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2021 · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 王中王 MBK — 商场渠道 — 嘉豪对接口径：游客流量</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品综合超市 (商场加盟店)</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Wang Zhong Wang Terminal 21 Rama 3 (王中王 Terminal 21)</div>
+      <div class="name-en">Wang Zhong Wang Supermarket (Terminal 21 Rama 3 Branch)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Terminal 21 Rama 3, Sathupradit Soi 19, Khlong Toei, Bangkok 10110</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Wang Zhong Wang Terminal 21 Rama 3 (王中王 Terminal 21)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wang%20Zhong%20Wang%20Supermarket%20%28Terminal%2021%20Rama%203%20Branch%29%20Terminal%2021%20Rama%203%2C%20Sathupradit%20Soi%2019%2C%20Khlong%20Toei%2C%20Bangkok%2010110" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Terminal 21 Rama 3, Sathupradit Soi 19, Khlong Toei, Bangkok 10110`, this); return false;">📋 复制地址</button>
+          <a href="mailto:info@wzw-th.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Khlong Toei / Terminal 21 Rama 3</div>
+        <div style="margin-top:4px;">中国零食 + 调味料 + 网红爆款 | 营业 10:00-22:00 | 创办 2021</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2021 · 可信度 ★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 王中王 Terminal 21 — 商场渠道 — 嘉豪对接口径：东部游客</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品综合超市 (商场加盟店)</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Wang Zhong Wang Silom Edge (王中王 Silom Edge)</div>
+      <div class="name-en">Wang Zhong Wang Supermarket (Silom Edge Branch)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Silom Edge, 486 Narathiwat Rd, Bang Rak, Bangkok 10500</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Wang Zhong Wang Silom Edge (王中王 Silom Edge)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wang%20Zhong%20Wang%20Supermarket%20%28Silom%20Edge%20Branch%29%20Silom%20Edge%2C%20486%20Narathiwat%20Rd%2C%20Bang%20Rak%2C%20Bangkok%2010500" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Silom Edge, 486 Narathiwat Rd, Bang Rak, Bangkok 10500`, this); return false;">📋 复制地址</button>
+          <a href="mailto:info@wzw-th.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Bang Rak / Silom</div>
+        <div style="margin-top:4px;">中国零食 + 调味料 + 网红爆款 | 营业 10:00-22:00 | 创办 2021</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2021 · 可信度 ★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 王中王 Silom Edge — Silom 商区渠道 — 嘉豪对接口径：高端商务区</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国商品综合超市 (大学生区)</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">Wang Zhong Wang Chulalongkorn (王中王 朱拉)</div>
+      <div class="name-en">Wang Zhong Wang Supermarket (Chulalongkorn Branch)</div>
+      <div class="phone-block"><span class="phone-link" style="background:#E7E6E6;color:#888;">📞 电话待核实</span></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Chulalongkorn University area, Rama IV Rd, Pathum Wan, Bangkok 10330</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('【待 Thomas 实地核实】', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Wang Zhong Wang Chulalongkorn (王中王 朱拉)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wang%20Zhong%20Wang%20Supermarket%20%28Chulalongkorn%20Branch%29%20Chulalongkorn%20University%20area%2C%20Rama%20IV%20Rd%2C%20Pathum%20Wan%2C%20Bangkok%2010330" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Chulalongkorn University area, Rama IV Rd, Pathum Wan, Bangkok 10330`, this); return false;">📋 复制地址</button>
+          <a href="mailto:info@wzw-th.com" class="btn btn-copy">✉️ 邮箱</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Pathum Wan / Chulalongkorn</div>
+        <div style="margin-top:4px;">中国零食 + 调味料 + 学生口粮 | 营业 10:00-22:00 | 创办 2021</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 2021 · 可信度 ★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 王中王 朱拉 — 大学生区渠道 — 嘉豪对接口径：年轻华人学生</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 中国肉类制品老字号 (60+ 年)</span><span class="source-tag">Sheet 5 中国超市</span></div>
+      <div class="name">合記林真香 (Hup Kee)</div>
+      <div class="name-en">Hup Kee Lam Cheng Sang</div>
+      <div class="phone-block"><a href="tel:+6626229078" class="phone-link">📞 02-622-9078<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>450 Yaowarat Rd, Khwaeng Samphanthawong, Khet Samphanthawong, Krung Thep Maha Nakhon 10100</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626229078', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('合記林真香 (Hup Kee)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hup%20Kee%20Lam%20Cheng%20Sang%20450%20Yaowarat%20Rd%2C%20Khwaeng%20Samphanthawong%2C%20Khet%20Samphanthawong%2C%20Krung%20Thep%20Maha%20Nakhon%2010100" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`450 Yaowarat Rd, Khwaeng Samphanthawong, Khet Samphanthawong, Krung Thep Maha Nakhon 10100`, this); return false;">📋 复制地址</button>
+          
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏪 曼谷 · Samphanthawong / Yaowarat</div>
+        <div style="margin-top:4px;">猪肉干 + 肉松 + 肉松脆饼 + 肉类制品 (60+ 年历史) + 外币兑换服务 | 营业 15:30-00:00 (无休) | 创办 1960s</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">创办 1960s · 可信度 ★★★★</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Yaowarat 老字号 60+ 年 — 猪肉干+肉松 — 满 1000 THB 酒店送货 — 嘉豪老字号代表对接 — 外币兑换服务 (汇率优于街面)</div>
+    </div></div>
+</section>
+<section id="sheet6" class="section">
+  <div class="section-title" style="background:#7030A0;">6. 曼谷国际高级酒店 + 当地昂贵酒店 (嘉豪对接口径表) (18 条)</div>
+  <div class="section-body"><div class="card">
+      <div class="card-head"><span class="badge">• 5星奢华旗舰店 (World's 50 Best 2024 #1)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Capella Bangkok (嘉佩乐)</div>
+      <div class="name-en">Capella Bangkok</div>
+      <div class="phone-block"><a href="tel:+6620983888" class="phone-link">📞 +66 2 098 3888 (总机) / +66 2 098 3899 (传真)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>300/2 Charoenkrung Road, Yannawa, Sathorn, Bangkok 10120</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6620983888', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Capella Bangkok (嘉佩乐)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Capella%20Bangkok%20300/2%20Charoenkrung%20Road%2C%20Yannawa%2C%20Sathorn%2C%20Bangkok%2010120" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`300/2 Charoenkrung Road, Yannawa, Sathorn, Bangkok 10120`, this); return false;">📋 复制地址</button>
+          <a href="https://capellahotels.com/en/capella-bangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 顶级 5星 (101 间客房, 7 间河畔别墅) — World's Best Hotel 2024 #1 — Michelin 2 Keys 2025 — Forbes Travel Guide 5-Star 2026 — Côte by Mauro Colagreco 2 星 — 起价 USD 600/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">新加坡 Capella Hotel Group (Horst Schulze 创立 / Ritz-Carlton 联合创始人) · Capella Hotel Group 总部直接运营</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ World's Best Hotel 2024 #1 — 嘉豪最高端渠道 — Chutima Chotivong (Senior Director of Sales) / Monta Chada (Executive Assistant)</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星老牌奢华旗舰店 (148 年历史)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Mandarin Oriental Bangkok (文华东方)</div>
+      <div class="name-en">Mandarin Oriental, Bangkok</div>
+      <div class="phone-block"><a href="tel:+66026599000" class="phone-link">📞 +66 (0) 2 659 9000 (总机) / +66 2 659 0000 (传真)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>48 Oriental Avenue, Soi Charoenkrung 40, Bangrak, Bangkok 10500</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+66026599000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Mandarin Oriental Bangkok (文华东方)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mandarin%20Oriental%2C%20Bangkok%2048%20Oriental%20Avenue%2C%20Soi%20Charoenkrung%2040%2C%20Bangrak%2C%20Bangkok%2010500" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`48 Oriental Avenue, Soi Charoenkrung 40, Bangrak, Bangkok 10500`, this); return false;">📋 复制地址</button>
+          <a href="https://www.mandarinoriental.com/bangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰) + 计划扩展 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 老牌奢华 (393 间客房) — World's 50 Best 2024 #12 — Michelin 3 Keys 2025 — Daily Telegraph World's Best Hotel — Mr. Anthony Tyler (General Manager) / Mrs. Supansa Bourke (Director of Commercial Strategy) — 起价 USD 800/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">香港 Mandarin Oriental Group + 泰国 OHTL Public Company Limited (上市) · OHTL Public Company Limited (曼谷东方酒店)</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 148 年历史老牌旗舰 — 嘉豪最高端渠道 — 12 间餐厅+酒吧+Oriental Spa</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星奢华旗舰店 (World's 50 Best 2024 #14)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Four Seasons Bangkok at Chao Phraya River (四季)</div>
+      <div class="name-en">Four Seasons Hotel Bangkok at Chao Phraya River</div>
+      <div class="phone-block"><a href="tel:+6620983888" class="phone-link">📞 +66 2 098 3888 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>3000 Charoenkrung Road, Yannawa, Sathorn, Bangkok 10120</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6620983888', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Four Seasons Bangkok at Chao Phraya River (四季)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Four%20Seasons%20Hotel%20Bangkok%20at%20Chao%20Phraya%20River%203000%20Charoenkrung%20Road%2C%20Yannawa%2C%20Sathorn%2C%20Bangkok%2010120" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`3000 Charoenkrung Road, Yannawa, Sathorn, Bangkok 10120`, this); return false;">📋 复制地址</button>
+          <a href="https://www.fourseasons.com/bangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 河畔奢华 (159 间客房) — World's 50 Best 2024 #14 — 业主 CPG — 起价 USD 700/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">加拿大 Four Seasons Hotels + 泰国 CPG (Chaivat Pholprasit Group) 业主 · Four Seasons 直接管理 + 业主 CPG</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 四季河畔旗舰 — 嘉豪高端渠道 — 与 Capella 同区域河畔 (Sathorn)</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星精品奢华旗舰店 (World's 50 Best 2024 #26)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">The Siam (暹罗酒店)</div>
+      <div class="name-en">The Siam</div>
+      <div class="phone-block"><a href="tel:+6622066999" class="phone-link">📞 +66 2 206 6999 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>3/2 Thanon Khao, Vachirapayabal Subdistrict, Dusit District, Bangkok 10300</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6622066999', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('The Siam (暹罗酒店)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=The%20Siam%203/2%20Thanon%20Khao%2C%20Vachirapayabal%20Subdistrict%2C%20Dusit%20District%2C%20Bangkok%2010300" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`3/2 Thanon Khao, Vachirapayabal Subdistrict, Dusit District, Bangkok 10300`, this); return false;">📋 复制地址</button>
+          <a href="https://www.thesiamhotel.com" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 精品奢华 (39 间客房) — World's 50 Best 2024 #26 — Condé Nast Readers' Choice — 起价 USD 600/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">泰国 Krissada Sukosol Clapp (演员) — 独立酒店 · 独立经营 — Krissada 家族</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 暹罗精品旗舰 — 嘉豪高端渠道 — 39 间房精品+古董收藏+私人河畔泳池别墅</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星度假村 (河畔)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Anantara Riverside Bangkok Resort (安纳塔拉)</div>
+      <div class="name-en">Anantara Riverside Bangkok Resort</div>
+      <div class="phone-block"><a href="tel:+6624760022" class="phone-link">📞 +66 2 476 0022 (总机)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>257/1-3 Charoennakorn Road, Samrae, Thon Buri, Bangkok 10600</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6624760022', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Anantara Riverside Bangkok Resort (安纳塔拉)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Anantara%20Riverside%20Bangkok%20Resort%20257/1-3%20Charoennakorn%20Road%2C%20Samrae%2C%20Thon%20Buri%2C%20Bangkok%2010600" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`257/1-3 Charoennakorn Road, Samrae, Thon Buri, Bangkok 10600`, this); return false;">📋 复制地址</button>
+          <a href="https://www.anantara.com/en/riverside-bangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰度假村) + 14+ 泰国其他 Anantara 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 河畔度假村 — 6 间餐厅+3 间酒吧+咖啡店 — 起价 USD 200/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">Minor International PCL (泰国) + Anantara 品牌 · Minor 直营</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 河畔度假村 — 嘉豪中高端渠道 — 适合商务+旅游双客群</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星奢华旗舰店 (凯悦顶级品牌)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Park Hyatt Bangkok (柏悦)</div>
+      <div class="name-en">Park Hyatt Bangkok</div>
+      <div class="phone-block"><a href="tel:+6620981234" class="phone-link">📞 +66 2 098 1234 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>88 Wireless Road, Pathum Wan, Bangkok 10330</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6620981234', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Park Hyatt Bangkok (柏悦)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Park%20Hyatt%20Bangkok%2088%20Wireless%20Road%2C%20Pathum%20Wan%2C%20Bangkok%2010330" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`88 Wireless Road, Pathum Wan, Bangkok 10330`, this); return false;">📋 复制地址</button>
+          <a href="https://www.hyatt.com/en-US/hotel/thailand/park-hyatt-bangkok/bkkph" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (Park Hyatt) + 计划扩展 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 凯悦顶级品牌 (222 间客房) — 起价 USD 500/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">美国 Hyatt Hotels Corporation + 泰国 Central Pattana · Hyatt 直接管理 + 业主 Central Pattana</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Park Hyatt 旗舰 — 嘉豪高端渠道 — 业主 Central Pattana (CPN)</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星奢华旗舰店</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Rosewood Bangkok (瑰丽)</div>
+      <div class="name-en">Rosewood Bangkok</div>
+      <div class="phone-block"><a href="tel:+6620800088" class="phone-link">📞 +66 2 080 0088 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>1041/38 Ploenchit Road, Lumpini, Pathum Wan, Bangkok 10330 (近 Wireless Rd)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6620800088', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Rosewood Bangkok (瑰丽)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Rosewood%20Bangkok%201041/38%20Ploenchit%20Road%2C%20Lumpini%2C%20Pathum%20Wan%2C%20Bangkok%2010330%20%28%E8%BF%91%20Wireless%20Rd%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`1041/38 Ploenchit Road, Lumpini, Pathum Wan, Bangkok 10330 (近 Wireless Rd)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.rosewoodhotels.com/en/bangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 瑰丽奢华 (159 间客房) — World's 50 Best 2024 #3 香港 Rosewood 集团 — 起价 USD 500/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">香港 New World Development / Rosewood Hotel Group · Rosewood 直接管理</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Rosewood 旗舰 — 嘉豪高端渠道 — 现代化设计+曼谷天际线视野</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星国际品牌 (高端)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Hilton Bangkok (希尔顿)</div>
+      <div class="name-en">Hilton Bangkok / Hilton Sukhumvit Bangkok</div>
+      <div class="phone-block"><a href="tel:+6626660999" class="phone-link">📞 +66 2 666 0999 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>Watthana / Sukhumvit, 曼谷</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626660999', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Hilton Bangkok (希尔顿)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hilton%20Bangkok%20/%20Hilton%20Sukhumvit%20Bangkok%20Watthana%20/%20Sukhumvit%2C%20%E6%9B%BC%E8%B0%B7" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`Watthana / Sukhumvit, 曼谷`, this); return false;">📋 复制地址</button>
+          <a href="https://www.hilton.com/en/hotels/bkkhihi-hilton-bangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (Hilton) + 计划扩展 (DoubleTree/Hampton by Hilton 多家) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 希尔顿高端 — 起价 USD 350/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">美国 Hilton Worldwide · Hilton 直接管理 + 本地合作</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 希尔顿泰国旗舰 — 嘉豪国际渠道 — 2024 计划扩展 5+ Hilton 品牌</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星国际品牌 (高端)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Marriott Marquis Queen's Park (万豪)</div>
+      <div class="name-en">Bangkok Marriott Marquis Queen's Park</div>
+      <div class="phone-block"><a href="tel:+6620595999" class="phone-link">📞 +66 2 059 5999 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>199 Sukhumvit Soi 22, Klong Ton, Khlong Toei, Bangkok 10110</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6620595999', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Marriott Marquis Queen's Park (万豪)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Bangkok%20Marriott%20Marquis%20Queen%27s%20Park%20199%20Sukhumvit%20Soi%2022%2C%20Klong%20Ton%2C%20Khlong%20Toei%2C%20Bangkok%2010110" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`199 Sukhumvit Soi 22, Klong Ton, Khlong Toei, Bangkok 10110`, this); return false;">📋 复制地址</button>
+          <a href="https://www.marriott.com/en-us/hotels/bkkok-bangkok-marriott-marquis-queens-park/overview" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 6+ Marriott 品牌 (Marriott/JW Marriott/Sheraton/Renaissance/Le Meridien) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 万豪旗舰 — Marriott 集团销售可一次性对接 6+ 泰国酒店</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">美国 Marriott International + 泰国 TCC Group · Marriott 直接管理 + 业主 TCC Group</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Marriott 旗舰 — 嘉豪对接口径：找 Marriott Vietnam Sales 即可对接 6+ 泰国酒店</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星国际品牌 (法式奢华)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Sofitel Bangkok Sukhumvit (雅高)</div>
+      <div class="name-en">Sofitel Bangkok Sukhumvit</div>
+      <div class="phone-block"><a href="tel:+6626564999" class="phone-link">📞 +66 2 656 4999 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>189 Sukhumvit Soi 13, Khlong Toei Nuea, Watthana, Bangkok 10110</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626564999', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Sofitel Bangkok Sukhumvit (雅高)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Sofitel%20Bangkok%20Sukhumvit%20189%20Sukhumvit%20Soi%2013%2C%20Khlong%20Toei%20Nuea%2C%20Watthana%2C%20Bangkok%2010110" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`189 Sukhumvit Soi 13, Khlong Toei Nuea, Watthana, Bangkok 10110`, this); return false;">📋 复制地址</button>
+          <a href="https://www.sofitel.com/en/hotel/B0C7-sofitel-bangkok-sukhumvit" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 3+ Accor 品牌 (Sofitel/Pullman/MGallery) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 雅高法式奢华 — Accor 集团销售可一次性对接 3+ 泰国酒店</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">法国 AccorHotels + 泰国 TCC Group · Accor 直接管理 + 业主 TCC Group</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Sofitel 旗舰 — 嘉豪对接口径：找 Accor Vietnam Sales 即可对接 Sofitel/Pullman/MGallery</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星国际品牌</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">InterContinental Bangkok (洲际)</div>
+      <div class="name-en">InterContinental Bangkok</div>
+      <div class="phone-block"><a href="tel:+6626560444" class="phone-link">📞 +66 2 656 0444 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>973 Phloen Chit Road, Lumphini, Pathum Wan, Bangkok 10330</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626560444', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('InterContinental Bangkok (洲际)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=InterContinental%20Bangkok%20973%20Phloen%20Chit%20Road%2C%20Lumphini%2C%20Pathum%20Wan%2C%20Bangkok%2010330" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`973 Phloen Chit Road, Lumphini, Pathum Wan, Bangkok 10330`, this); return false;">📋 复制地址</button>
+          <a href="https://www.ihg.com/intercontinental/hotels/us/en/bangkok/bkkha/hoteldetail" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (洲际) + 计划扩展 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 洲际高端 — IHG 集团销售对接</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">英国 IHG (洲际酒店集团) · IHG 直接管理</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 洲际旗舰 — 嘉豪对接口径：IHG 集团销售对接</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星国际品牌 (韩资)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Lotte Hotel Bangkok (乐天)</div>
+      <div class="name-en">Lotte Hotel Bangkok</div>
+      <div class="phone-block"><a href="tel:+6626777000" class="phone-link">📞 +66 2 677 7000 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>3 Soi Somprasong 1, Phloen Chit Road, Lumphini, Pathum Wan, Bangkok 10330 (近 Chit Lom BTS)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626777000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Lotte Hotel Bangkok (乐天)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lotte%20Hotel%20Bangkok%203%20Soi%20Somprasong%201%2C%20Phloen%20Chit%20Road%2C%20Lumphini%2C%20Pathum%20Wan%2C%20Bangkok%2010330%20%28%E8%BF%91%20Chit%20Lom%20BTS%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`3 Soi Somprasong 1, Phloen Chit Road, Lumphini, Pathum Wan, Bangkok 10330 (近 Chit Lom BTS)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.lottehotel.com/bangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 乐天旗舰 — 韩资豪华 — 起价 USD 350/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">韩国 Lotte Hotel & Resort · Lotte 直接管理</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Lotte 旗舰 — 嘉豪对接口径：韩资背景+东南亚扩张</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星国际品牌 (亚洲奢华)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Banyan Tree Bangkok (悦榕庄)</div>
+      <div class="name-en">Banyan Tree Bangkok</div>
+      <div class="phone-block"><a href="tel:+6626791200" class="phone-link">📞 +66 2 679 1200 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>21/100 South Sathorn Road, Thung Maha Mek, Sathorn, Bangkok 10120</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626791200', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Banyan Tree Bangkok (悦榕庄)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Banyan%20Tree%20Bangkok%2021/100%20South%20Sathorn%20Road%2C%20Thung%20Maha%20Mek%2C%20Sathorn%2C%20Bangkok%2010120" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`21/100 South Sathorn Road, Thung Maha Mek, Sathorn, Bangkok 10120`, this); return false;">📋 复制地址</button>
+          <a href="https://www.banyantree.com/en/thailand/bangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 2+ (Banyan Tree Bangkok + Banyan Tree Phuket) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 悦榕庄旗舰 — 起价 USD 400/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">新加坡 Banyan Tree Holdings · Banyan Tree 直接管理</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 悦榕庄旗舰 — 嘉豪对接口径：新加坡奢华品牌</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星国际品牌 (亚洲)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Shangri-La Bangkok (香格里拉)</div>
+      <div class="name-en">Shangri-La Bangkok</div>
+      <div class="phone-block"><a href="tel:+6622367777" class="phone-link">📞 +66 2 236 7777 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>89 Soi Wat Suan Plu, New Bangrak Road, Bangrak, Bangkok 10500 (与 Mandarin Oriental 同区)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6622367777', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Shangri-La Bangkok (香格里拉)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Shangri-La%20Bangkok%2089%20Soi%20Wat%20Suan%20Plu%2C%20New%20Bangrak%20Road%2C%20Bangrak%2C%20Bangkok%2010500%20%28%E4%B8%8E%20Mandarin%20Oriental%20%E5%90%8C%E5%8C%BA%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`89 Soi Wat Suan Plu, New Bangrak Road, Bangrak, Bangkok 10500 (与 Mandarin Oriental 同区)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.shangri-la.com/bangkok/shangrilabangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 香格里拉旗舰 — 起价 USD 350/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">香港 Shangri-La Hotels and Resorts · Shangri-La 直接管理</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Shangri-La 旗舰 — 嘉豪对接口径：亚洲奢华品牌</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星奢华 (万豪高端)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">JW Marriott Hotel Bangkok (JW 万豪)</div>
+      <div class="name-en">JW Marriott Hotel Bangkok</div>
+      <div class="phone-block"><a href="tel:+6626707555" class="phone-link">📞 +66 2 670 7555 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>2 Sukhumvit Soi 2, Khlong Toei, Bangkok 10110</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626707555', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('JW Marriott Hotel Bangkok (JW 万豪)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=JW%20Marriott%20Hotel%20Bangkok%202%20Sukhumvit%20Soi%202%2C%20Khlong%20Toei%2C%20Bangkok%2010110" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`2 Sukhumvit Soi 2, Khlong Toei, Bangkok 10110`, this); return false;">📋 复制地址</button>
+          <a href="https://www.marriott.com/en-us/hotels/bkkdt-jw-marriott-hotel-bangkok/overview" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (JW) + Marriott 多家泰国 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + JW 奢华 — Marriott 集团销售对接</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">美国 Marriott International · Marriott 直接管理</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ JW Marriott — 嘉豪对接口径：Marriott 集团销售对接 6+ 泰国酒店</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星本地豪华精品</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">The Sukhothai Bangkok (素可泰)</div>
+      <div class="name-en">The Sukhothai Bangkok</div>
+      <div class="phone-block"><a href="tel:+6623448888" class="phone-link">📞 +66 2 344 8888 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>13/3 South Sathorn Road, Thung Maha Mek, Sathorn, Bangkok 10120</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6623448888', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('The Sukhothai Bangkok (素可泰)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=The%20Sukhothai%20Bangkok%2013/3%20South%20Sathorn%20Road%2C%20Thung%20Maha%20Mek%2C%20Sathorn%2C%20Bangkok%2010120" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`13/3 South Sathorn Road, Thung Maha Mek, Sathorn, Bangkok 10120`, this); return false;">📋 复制地址</button>
+          <a href="https://www.thesukhothai.com" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 泰式奢华精品 (210 间客房) — 起价 USD 400/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">泰国 Sukhothai Hotel Co., Ltd. + 香港 Small Luxury Hotels · 本地经营 + SLH 集团会员</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 泰式精品旗舰 — 嘉豪本地奢华渠道</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星国际品牌 (欧式奢华)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Siam Kempinski Hotel Bangkok (凯宾斯基)</div>
+      <div class="name-en">Siam Kempinski Hotel Bangkok</div>
+      <div class="phone-block"><a href="tel:+6626581000" class="phone-link">📞 +66 2 658 1000 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>991/9 Rama I Road, Pathum Wan, Bangkok 10330 (Siam Paragon 商场旁)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6626581000', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Siam Kempinski Hotel Bangkok (凯宾斯基)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Siam%20Kempinski%20Hotel%20Bangkok%20991/9%20Rama%20I%20Road%2C%20Pathum%20Wan%2C%20Bangkok%2010330%20%28Siam%20Paragon%20%E5%95%86%E5%9C%BA%E6%97%81%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`991/9 Rama I Road, Pathum Wan, Bangkok 10330 (Siam Paragon 商场旁)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.kempinski.com/en/siam-bangkok" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 1 (旗舰) + 1 (Siam Kempinski 后续) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + 凯宾斯基欧式奢华 (397 间客房) — 与 Siam Paragon 商场互联 — 起价 USD 400/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">德国 Kempinski Hotels + 泰国 Siam Piwat (Siam 集团) · Kempinski 直接管理 + 业主 Siam Piwat</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ 凯宾斯基旗舰 — 嘉豪对接口径：欧式奢华+Siam 集团商场互联</div>
+    </div>
+<div class="card">
+      <div class="card-head"><span class="badge">• 5星本地品牌 (Central Group)</span><span class="source-tag">Sheet 6 酒店</span></div>
+      <div class="name">Centara Grand at CentralWorld (盛泰乐)</div>
+      <div class="name-en">Centara Grand at CentralWorld</div>
+      <div class="phone-block"><a href="tel:+6621001234" class="phone-link">📞 +66 2 100 1234 (参考 — 待 Thomas 谷歌地图复核)<span class="lbl">点击拨打</span></a></div>
+      <div class="addr-block">
+        <div class="addr-text"><span class="pin">📍</span>999/99 Rama I Rd, Pathum Wan, Bangkok 10330 (CentralWorld 上方)</div>
+        <div class="addr-actions">
+          <button class="btn btn-copy" onclick="copyText('+6621001234', '电话'); return false;">📞 复制电话</button>
+          <button class="btn btn-name" onclick="copyText('Centara Grand at CentralWorld (盛泰乐)', '公司名'); return false;">🏷 复制名字</button>
+          <a href="https://www.google.com/maps/search/?api=1&query=Centara%20Grand%20at%20CentralWorld%20999/99%20Rama%20I%20Rd%2C%20Pathum%20Wan%2C%20Bangkok%2010330%20%28CentralWorld%20%E4%B8%8A%E6%96%B9%29" target="_blank" class="btn btn-maps">🗺️ Google Maps</a>
+          <button class="btn btn-copy" onclick="copyAddr(`999/99 Rama I Rd, Pathum Wan, Bangkok 10330 (CentralWorld 上方)`, this); return false;">📋 复制地址</button>
+          <a href="https://www.centarahotelsresorts.com/centaragrand/cgbb" target="_blank" class="btn btn-name">🌐 官网</a>
+        </div>
+      </div>
+      <div style="margin-top:6px;font-size:12px;color:#666;">
+        <div>🏨 60+ Centara 在泰国 (Centara Grand + Centara + Centara Life) 店 · 曼谷</div>
+        <div style="margin-top:4px;">★ 炒菜机器人 + 酱料 + Centara 旗舰 (505 间客房) — CentralWorld 商场直连 — 起价 USD 250/晚</div>
+        <div style="margin-top:4px;font-weight:600;color:#1F3864;">泰国 Centara Hotels & Resorts (Central Group) · Centara 直营</div>
+      </div>
+      <div style="margin-top:6px;padding:8px 10px;background:#FFFBEA;border-radius:6px;font-size:12px;color:#5F4E1D;border-left:3px solid #BF8F00;">💡 ★ Centara 旗舰 — 嘉豪对接口径：泰国最大本土酒店集团 (60+ 店) — 中央集团集采</div>
+    </div></div>
+</section>
+
+<script>
+function copyText(text, label) {
+  if (!text || text.startsWith('【待') || text.startsWith('待 Thomas')) {
+    alert('⚠️ 该字段暂无数据（待 Thomas 实地核实）');
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('✅ 已复制: ' + text);
+    }, () => fallbackCopy(text));
+  } else {
+    fallbackCopy(text);
+  }
+}
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); alert('✅ 已复制: ' + text); }
+  catch(e) { alert('❌ 复制失败: ' + text); }
+  document.body.removeChild(ta);
+}
+function copyAddr(addr, btn) {
+  copyText(addr, '地址');
+}
+</script>
+</body>
+</html>
